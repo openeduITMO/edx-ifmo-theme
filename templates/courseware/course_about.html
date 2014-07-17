@@ -117,6 +117,42 @@
   </script>
 
   <script src="${static.url('js/course_info.js')}"></script>
+
+  <!-- VK sharing -->
+  <%
+        site_domain = microsite.get_value('site_domain', settings.SITE_NAME)
+        platform_name = microsite.get_value('platform_name', settings.PLATFORM_NAME)
+        platform_url = "http://%s".format(site_domain)
+        course_url = "{site_domain}{course_location}".format(
+            site_domain=site_domain,
+            course_location=reverse('about_course', args=[course.id])
+        )
+        course_image = "{site_domain}{course_location}".format(
+            site_domain=site_domain,
+            course_location=course_image_url(course)
+        )
+        course_title = get_course_about_section(course, 'title')
+        vk_share_text = "Я буду проходить этот курс! Присоединяйтесь: {course_url}".format(
+            course_url=course_url
+        )
+        course_image = static.url(course_image_url(course))
+   %>
+
+  <script type="text/javascript" src="http://vk.com/js/api/share.js" charset="windows-1251"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+	    $("#vkSharer").html(VK.Share.button({
+            url: '${course_url}',
+            title: '${course_title}',
+            description: '${vk_share_text}',
+            image: '${course_image}'
+        }, {
+            type: 'custom',
+            text: '<img src="${static.url('themes/ifmo/images/social/vk-sharing.png')}" />'
+        }));
+	});
+  </script>
+
 </%block>
 
 <%block name="pagetitle">${_("About {course.display_number_with_default}").format(course=course) | h}</%block>
@@ -279,6 +315,7 @@
                     )
                 ).replace(u" ", u"%20")
               %>
+              <span id="vkSharer" class="share"></span>
               <a href="${tweet_action}" class="share">
                 <img src="${static.url('images/social/twitter-sharing.png')}" alt="Tweet that you've registered for this course">
               </a>
