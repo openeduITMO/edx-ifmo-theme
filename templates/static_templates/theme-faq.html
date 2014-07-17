@@ -1,0 +1,252 @@
+##mako
+
+## TODO Move this to static_static templates
+
+<%! from django.utils.translation import ugettext as _ %>
+<%namespace name='static' file='/static_content.html'/>
+
+<%inherit file="/main.html" />
+
+<%block name="pagetitle">${_("Frequently Asked Questions")}</%block>
+
+<%block name="js_extra">
+<script src="${static.url('js/help.js')}"></script>
+</%block>
+
+## TODO Move out two legacy classes from here
+<section class="container about ifmo-content static-container help">
+
+<h1>Help</h1>
+  <hr class="horizontal-divider">
+
+  <section class="questions">
+ <section class="responses">
+      <section id="edx_basics_faq" class="category">
+        <h2>ITMOcourses Basics</h2>
+        <article class="response">
+          <h3 class="question">How do I sign up to take a class?</h3>
+          <div class="answer" id="edx_basics_faq_answer_0">
+            <p>Simply create an ITMOcourses account (it's free) and then register for the course of your choice (also free). Follow the prompts on the ITMOcourses website.</p>
+          </div>
+        </article>
+        <article class="response">
+          <h3 class="question">What does it cost to take a class? Is this really free?</h3>
+          <div class="answer" id="edx_basics_faq_answer_1">
+            <p>ITMOcourses are free for everyone. All you need is an Internet connection.</p>
+          </div>
+        </article>
+        <article class="response">
+          <h3 class="question">What happens after I sign up for a course?</h3>
+          <div class="answer" id="edx_basics_faq_answer_2">
+            <p>You will need to log in each time you access your course(s). Once the course begins, it's time to hit the virtual books. You can access the lectures, homework, tutorials, etc., for each week, one week at a time.</p>
+          </div>
+        </article>
+        <article class="response">
+          <h3 class="question">Who can take an ITMOcourses?</h3>
+          <div class="answer" id="edx_basics_faq_answer_3">
+            <p>You, your mom, your little brother, your grandfather -- anyone with Internet access can take a course. Free.</p>
+          </div>
+        </article>
+        <article class="response">
+          <h3 class="question">When will there be more courses on other subjects?</h3>
+          <div class="answer" id="edx_basics_faq_answer_5">
+            <p>We are continually reviewing and creating courses to add to the ITMOcourses. Please check the website for future course announcements.</p>
+          </div>
+        </article>
+        <article class="response">
+          <h3 class="question">When does my course start and/or finish?</h3>
+          <div class="answer" id="edx_basics_faq_answer_7">
+            <p>You can find the start and stop dates for each course on each course description page.</p>
+          </div>
+        </article>
+        <article class="response">
+          <h3 class="question">I don't have the prerequisites for a course that I am interested in. Can I still take the course?</h3>
+          <div class="answer" id="edx_basics_faq_answer_9">
+            <p>We do not check students for prerequisites, so you are allowed to attempt the course. However, if you do not know prerequisite subjects before taking a class, you will have to learn the prerequisite material on your own over the semester, which can be an extremely difficult task.</p>
+          </div>
+        </article>
+        <article class="response">
+          <h3 class="question">What happens if I have to quit a course? Are there any penalties? Will I be able to take another course in the future?</h3>
+          <div class="answer" id="edx_basics_faq_answer_10">
+            <p>You may unregister from a course at anytime, there are absolutely no penalties associated with incomplete studies, and you may register for the same course (provided we are still offering it) at a later time.</p>
+          </div>
+        </article>
+      </section>
+
+      <section id="classes_faq" class="category">
+        <h2>The Classes</h2>
+        <article class="response">
+          <h3 class="question">What should I do before I take a course (prerequisites)?</h3>
+          <div class="answer" id="classes_faq_answer_1">
+            <p>Each course is different - some have prerequisites, and some don't. Take a look at your specific course's recommended prerequisites. If you do not have a particular prerequisite, you may still take the course.</p>
+          </div>
+        </article>
+        <article class="response">
+          <h3 class="question">Can I take more than one course at a time?</h3>
+          <div class="answer" id="classes_faq_answer_4">
+            <p>You may take multiple courses, however we recommend checking the requirements on each course description page to determine your available study hours and the demands of the intended courses.</p>
+          </div>
+        </article>
+        <article class="response">
+          <h3 class="question">How do I log in to take an ITMOcourses class?</h3>
+          <div class="answer" id="classes_faq_answer_5">
+            <p>Once you sign up for a course and activate your account, click on the "Log In" button on the courses.ifmo.ru home page. You will need to type in your email address and ITMOcourses password each time you log in.</p>
+          </div>
+        </article>
+        <article class="response">
+          <h3 class="question">What time is the class?</h3>
+          <div class="answer" id="classes_faq_answer_6">
+            <p>ITMOcourses classes take place at your convenience. Prefer to sleep in and study late? No worries. Videos and problem sets are available 24 hours a day, which means you can watch video and complete work whenever you have spare time. You simply log in to your course via the Internet and work through the course material, one week at a time.</p>
+          </div>
+        </article>
+        <article class="response">
+          <h3 class="question">If I miss a week, how does this affect my grade?</h3>
+          <div class="answer" id="classes_faq_answer_7">
+            <p>It is certainly possible to pass an course if you miss a week; however, coursework is progressive, so you should review and study what you may have missed. You can check your progress dashboard in the course to see your course average along the way if you have any concerns.</p>
+          </div>
+        </article>
+        <article class="response">
+          <h3 class="question">How can I meet/find other students?</h3>
+          <div class="answer" id="classes_faq_answer_8">
+            <p>All courses have Discussion Forums where you can chat with and help each other within the framework of the Honor Code.</p>
+          </div>
+        </article>
+        <article class="response">
+          <h3 class="question">How can I talk to professors, fellows and teaching assistants?</h3>
+          <div class="answer" id="classes_faq_answer_9">
+            <p>The Discussion Forums are the best place to reach out to the ITMOcourses teaching team for your class, and you don't have to wait in line or rearrange your schedule to fit your professor's - just post your questions. The response isn't always immediate, but it's usually pretty darned quick.</p>
+          </div>
+        </article>
+
+          <article class="response">
+          <h3 class="question">Getting help.</h3>
+          <div class="answer" id="classes_faq_answer_10">
+            <p>You have a vibrant, global community of fellow online learners available 24-7 to help with the course within the framework of the Honor Code, as well as support from the TAs who monitor the course. Take a look at the course's Discussion Forum where you can review questions, answers and comments from fellow online learners, as well as post a question.</p>
+          </div>
+          </article>
+        <article class="response">
+          <h3 class="question">Can I re-take a course?</h3>
+          <div class="answer" id="classes_faq_answer_11">
+            <p>Good news: there are unlimited "mulligans" in ITMOcourses. You may re-take courses as often as you wish. Your performance in any particular offering of a course will not effect your standing in future offerings of any course, including future offerings of the same course.</p>
+          </div>
+        </article>
+        <article class="response">
+          <h3 class="question">Enrollment for a course that I am interested in is open, but the course has already started. Can I still enroll?</h3>
+          <div class="answer" id="classes_faq_answer_12">
+            <p>Yes, but you will not be able to turn in any assignments or exams that have already been due. If it is early in the course, you might still be able to earn enough points for a certificate, but you will have to check with the course in question in order to find out more.</p>
+          </div>
+        </article>
+        <article class="response">
+          <h3 class="question">Is there an exam at the end?</h3>
+          <div class="answer" id="classes_faq_answer_13">
+            <p>Different courses have slightly different structures. Please check the course material description to see if there is a final exam or final project.</p>
+          </div>
+        </article>
+        <article class="response">
+          <h3 class="question">Will the same courses be offered again in the future?</h3>
+          <div class="answer" id="classes_faq_answer_14">
+            <p>Existing courses will be re-offered, and more courses added.</p>
+          </div>
+        </article>
+      </section>
+
+
+      <section id="certificates_and_credits_faq" class="category">
+          <h2>Certificates &amp; Credits</h2>
+
+        <article class="response">
+          <h3 class="question">Will I get a certificate for taking a course?</h3>
+          <div class="answer" id="certificates_and_credits_faq_answer_0">
+            <p>Online learners who receive a passing grade for a course will receive a certificate of mastery at the discretion of ITMOcourses and the underlying X University that offered the course.</p>
+            <p>If you passed the course, your certificate of mastery will be delivered online through courses.ifmo.ru. So be sure to check your email in the weeks following the final grading - you will be able to download and print your certificate.</p>
+          </div>
+        </article>
+        <article class="response">
+          <h3 class="question">How are ITMOcourses certificates delivered?</h3>
+          <div class="answer" id="certificates_and_credits_faq_answer_1">
+            <p>ITMOcourses certificates are delivered online through courses.ifmo.ru. So be sure to check your email in the weeks following the final grading - you will be able to download and print your certificate.</p>
+          </div>
+        </article>
+        <article class="response">
+          <h3 class="question">How can I talk to professors, fellows and teaching assistants?</h3>
+          <div class="answer" id="certificates_and_credits_faq_answer_5">
+            <p>The Discussion Forums are the best place to reach out to the ITMOcourses teaching team for your class, and you don't have to wait in line or rearrange your schedule to fit your professor's - just post your questions. The response isn't always immediate, but it's usually pretty darned quick.</p>
+          </div>
+        </article>
+        <article class="response">
+          <h3 class="question">Will my university accept my coursework for credit?</h3>
+          <div class="answer" id="certificates_and_credits_faq_answer_7">
+            <p>Each educational institution makes its own decision regarding whether to accept coursework for credit. Check with your university for its policy.</p>
+          </div>
+        </article>
+        <article class="response">
+        <h3 class="question">I lost my ITMOcourses certificate - can you resend it to me?</h3>
+          <div class="answer" id="certificates_and_credits_faq_answer_8">
+            <p>Please log back in to your account to find certificates from the same profile page where they were originally posted. You will be able to re-print your certificate from there.</p>
+          </div>
+        </article>
+      </section>
+
+      <section id="other_help_faq" class="category">
+        <h2>Other Help Questions - Account Questions</h2>
+        <article class="response">
+          <h3 class="question">My username is taken.</h3>
+          <div class="answer" id="other_help_faq_answer_0">
+            <p>Now's your chance to be creative: please try a different, more unique username - for example, try adding a random number to the end.</p>
+          </div>
+        </article>
+        <article class="response">
+          <h3 class="question">Why does my password show on my course login page?</h3>
+          <div class="answer" id="other_help_faq_answer_1">
+            <p>Oops! This may be because of the way you created your account. For example, you may have mistakenly typed your password into the login box.</p>
+          </div>
+        </article>
+        <article class="response">
+          <h3 class="question">I am having login problems (password/email unrecognized).</h3>
+          <div class="answer" id="other_help_faq_answer_2">
+            <p>Please check your browser's settings to make sure that you have the current version of Firefox or Chrome, and then try logging in again. If you find access impossible, you may simply create a new account using an alternate email address - the old, unused account will disappear later.</p>
+          </div>
+        </article>
+        <article class="response">
+          <h3 class="question">Can I delete my account?</h3>
+          <div class="answer" id="other_help_faq_answer_4">
+            <p>There's no need to delete you account. An old, unused ITMOcourses account with no course completions associated with it will disappear.</p>
+          </div>
+        </article>
+        <article class="response">
+          <h3 class="question">I made a mistake creating my username - how do I fix it?</h3>
+          <div class="answer" id="other_help_faq_answer_4.5">
+            <p>In most cases it would simplest and fastest to create a new account.  Your old unused account will vanish naturally. If you were not aware of your mistake until much later, you should send us a detailed change request and we will do our best to edit your username.  Please bear in mind that usernames are unique, and the one you want may be taken.</p>
+          </div>
+        </article>
+        <article class="response">
+          <h3 class="question">I am experiencing problems with the display. E.g., There are tools missing from the course display, or I am unable to view video.</h3>
+          <div class="answer" id="other_help_faq_answer_5">
+            <p>Please check your browser and settings. We recommend downloading the current version of Firefox or Chrome. Alternatively, you may re-register with a different email account. There is no need to delete the old account, as it will disappear if unused.</p>
+          </div>
+        </article>
+        <article class="response">
+          <h3 class="question">How can I help ITMOcourses?</h3>
+          <div class="answer" id="edx_basics_faq_answer_6">
+            <p>You may not realize it, but just by taking a course you are helping ITMOcourses. That's because the ITMOcourses platform has been specifically designed to not only teach, but also gather data about learning. ITMOcourses will utilize this data to find out how to improve education online and on-campus.</p>
+          </div>
+        </article>
+
+      </section>
+
+    <!-- responses -->
+    </section>
+
+     <nav class="categories">
+      <a href="#edx_basics_faq">ITMOcourses Basics</a>
+      <a href="#classes_faq">The Classes</a>
+      <a href="#certificates_and_credits_faq">Certificates and Credits</a>
+      <a href="#other_help_faq">Other Help Questions - Account Questions</a>
+    </nav>
+
+    <!-- questions -->
+    </section>
+
+
+
+  </section>

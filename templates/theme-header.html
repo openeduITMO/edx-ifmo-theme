@@ -1,0 +1,36 @@
+## mako
+
+<%! 
+from django.core.urlresolvers import reverse 
+from django.utils.translation import ugettext as _
+%>
+<%namespace name='static' file='/static_content.html'/>
+
+<%inherit file="/navigation.html"/>
+
+<%block name="navigation_logo">
+  <img src="${static.url('themes/ifmo/images/header-logo.png')}" height="47" width="93" alt="${_("ITMOcourses home")}" />
+</%block>
+
+## Partners should be reversed by django
+<%def name="partners_link()">
+  <li class="nav-global-01">
+     <a href="/about">${_("About us")}</a>
+  </li>
+  <li class="nav-global-01">
+     <a href="/partners">${_("Partners")}</a>
+  </li>
+</%def>
+
+<%block name="navigation_global_links_authenticated">
+  % if settings.FEATURES.get('COURSES_ARE_BROWSABLE'):
+    <li class="nav-global-01">
+       <a href="${marketing_link('COURSES')}">${_('Find Courses')}</a>
+    </li>
+  % endif
+  ${partners_link()}
+</%block>
+
+<%block name="navigation_global_links">
+  ${partners_link()}
+</%block>

@@ -1,0 +1,34 @@
+##mako
+
+<%namespace name='static' file='/static_content.html'/>
+
+## TODO Move all these style definitions to sass
+<div class="wrapper wrapper-footer">
+  <footer>
+    <div class="colophon">
+
+      <div class="colophon-about" >
+        <a href="http://www.ifmo.ru" target="_blank" style="width:60px;height:51px;"><img src="${static.url('themes/ifmo/images/ifmo_rus_logo.jpg')}" style="width:60px;height:51px;"/></a>
+        <p style="color:#999; width:80%;">Saint-Petersburg National Research University of Information Technologies, Mechanics and Optics<br/>Distance Learning Center</p>
+      </div>  
+
+    </div>
+ 
+    <div class="references">
+
+      <!-- <p class="copyright">&copy; 2013 ITMOcources, some rights reserved.</p> -->
+
+      <nav class="nav-legal">
+        <ul>
+          <li class="nav-legal-01">
+            <a href="/honor">Code of honor</a>
+	  </li>
+	  <li class="nav-legal-02">
+            <a href="/tos">Terms of Service</a>
+	  </li>
+        </ul>
+      </nav>
+
+    </div>
+  </footer>
+</div>

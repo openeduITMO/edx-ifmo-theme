@@ -1,0 +1,41 @@
+##mako
+
+## TODO Move this to static_static templates
+
+<%! from django.utils.translation import ugettext as _ %>
+<%namespace name='static' file='/static_content.html'/>
+
+<%inherit file="main.html" />
+
+<%block name="pagetitle">${_("Partners")}</%block>
+
+<section class="container about ifmo-content">
+
+    <h1>Партнёры</h1>
+
+    <hr class="horizontal-divider">
+
+    <table>
+    <tr>
+      <td><p><a href="http://htmlacademy.ru/" target="_blank"><img src="${static.url('themes/ifmo/images/partners/htmlacademy_logo.png')}" alt="HTML Academy"/></a></td>
+      <td>
+        <p><b>HTML Academy</b> - сервис для интерактивного обучения HTML и CSS. На htmlacademy.ru каждый желающий может пройти курсы, чтобы изучить базовые понятия вёрстки, а затем углубить свои знания участием в «Интенсиве».</p>
+        <p>Задача HTML Academy – сделать из любого новичка полноценного и востребованного специалиста начального уровня, готового работать в веб-индустрии. Полученные навыки с легкостью позволят начать работать HTML-верстальщиком или другим интернет-специалистом (прототипировщиком, интернет-маркетологом, контент-менеджером, сео-специалистом).</p>
+      </td>
+    </tr>
+    <tr>
+      <td><p><a href="http://openedu.urfu.ru/" target="_blank"><img src="${static.url('themes/ifmo/images/partners/UrFU_logo.png')}" alt="Открытый университет УрФУ"/></a></td>
+      <td>
+        <p><b>Открытый университет УрФУ</b> предоставляет бесплатный доступ к учебным электронным курсам, разработанным в Уральском федеральном университете, и призван обеспечить комфортные условия для получения качественных знаний в удобное время в любой точке мира.</p>
+      </td>
+    </tr>
+    <tr>
+      <td><p><a href="http://www.younico.ru/" target="_blank"><img src="${static.url('themes/ifmo/images/partners/Younico_logo.png')}" alt="Younico"/></a></td>
+      <td>
+        <p><b>Younico</b> предоставляет платформу для прохождения коротких онлайн-курсов от ведущих образовательных центров и лидеров бизнеса: высших учебных заведений, частных компаний (ИТ-компаний, консалтинговых и тренинговых компаний, коворкингов, компаний, работающих в области рекламы и PR).</p>
+        <p>Цель Younico – создать удобный и доступный сервис, на котором каждый сможет найти полезные и интересные программы в любых областях, а также получить квалифицированную консультацию.</p>
+      </td>
+    </tr>
+    </table>
+
+</section>

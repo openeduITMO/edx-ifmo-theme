@@ -1,0 +1,27 @@
+##mako
+
+## TODO Move this to static_static templates
+
+<%! from django.utils.translation import ugettext as _ %>
+<%namespace name='static' file='/static_content.html'/>
+
+<%inherit file="/main.html" />
+
+<%block name="pagetitle">${_("Code of honour")}</%block>
+
+## TODO HTMLize theme-about
+
+<section class="container about ifmo-content">
+
+    <h1>Кодекс чести</h1>
+
+    <hr class="horizontal-divider">
+
+    <p>Все пользователи, записавшиеся на курс, выражают согласие соблюдать следующие правила:</p>
+    <ul>
+        <li>Мои ответы на задания курса будут результатом моей собственной работы, за исключением выполнения тех заданий, которые явно разрешают сотрудничество.</li>
+        <li>Я не буду предоставлять доступ к моим решениям заданий курса кому-либо еще.</li>
+        <li>Я не буду участвовать в деятельности, которая будет нечестным путем улучшать мои результаты.</li>
+    </ul>
+
+</section>

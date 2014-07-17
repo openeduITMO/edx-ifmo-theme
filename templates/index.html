@@ -1,0 +1,43 @@
+##mako
+
+## This is an edited  copy of edx-platform/lms/templates/index.html [11.02.14 @aa43689a]
+## It has additional random background from theme's static and "Anytime anywhere header".
+
+<%! from django.utils.translation import ugettext as _ %>
+
+<%! from django.core.urlresolvers import reverse %>
+<%inherit file="main.html" />
+<%namespace name='static' file='static_content.html'/>
+
+<%! from microsite_configuration import microsite %>
+
+<%
+    # Logo background class must be hardcoded into template, sass does not support random :3
+    from random import randint
+    background_class = 'ifmo-search-background-%s' % (randint(0, 1),)
+%>
+
+<section class="home">
+
+  <header class="ifmo-search ifmo-search-background ${background_class}">
+      <div class="ifmo-search-punchline">Learn new anywhere and anytime with comfort!</div>
+  </header>
+
+  <section class="container">
+    <section class="highlighted-courses">
+
+      % if settings.FEATURES.get('COURSES_ARE_BROWSABLE'):
+        <section class="courses">
+            <ul class="courses-listing">
+            %for course in courses:
+              <li class="courses-listing-item">
+                <%include file="course.html" args="course=course" />
+              </li>
+            %endfor
+            </ul>
+        </section>
+      % endif
+
+    </section>
+  </section>
+</section>
