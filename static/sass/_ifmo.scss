@@ -40,14 +40,19 @@
       background-color: transparent !important;
       /*background-size: 100% !important;
       background-position: center top !important;*/
-    }
 
-    &-background-0 {
-      background-image: url('../themes/ifmo/images/homepage-bg0.jpg') !important;
-    }
+      &-b0 {
+        background-image: url('../themes/ifmo/images/homepage-bg0.jpg') !important;
+      }
 
-    &-background-1 {
-      background-image: url('../themes/ifmo/images/homepage-bg1.jpg') !important;
+      &-b1 {
+        background-image: url('../themes/ifmo/images/homepage-bg1.jpg') !important;
+      }
+
+      &-with-punchline {
+        margin-top: 0px !important;
+      }
+
     }
 
     &-punchline {
@@ -56,7 +61,7 @@
       color: #eee;
       font-size: 1.5em;
       text-align: center;
-      padding: 1em;
+      padding: 1em 0em;
     }
 
   }
