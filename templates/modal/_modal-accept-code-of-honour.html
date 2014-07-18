@@ -1,0 +1,37 @@
+##mako
+
+## TODO Meh, modal does not work
+
+<%! from django.utils.translation import ugettext as _ %>
+
+<section id="code-of-honour-modal" class="modal code-of-honour-modal" aria-hidden="true">
+  <div class="inner-wrapper" role="alertdialog" aria-labelledy="code-of-honour-modal-title">
+    <button class="close-modal">
+      <i class="icon-remove"></i>
+      <span class="sr">
+        ## Translators: this is a control to allow users to exit out of this modal interface (a menu or piece of UI that takes the full focus of the screen)
+        ${_('Close')}
+      </span>
+    </button>
+
+    <header>
+      <h2 id="code-of-honour-modal-title">
+        ${_('Code of Honour')}
+        <span class="sr">,
+          ## Translators: this text gives status on if the modal interface (a menu or piece of UI that takes the full focus of the screen) is open or not
+          ${_("window open")}
+        </span>
+      </h2>
+      <hr/>
+    </header>
+    <p class="ifmo-modal-text">
+        ${_('You need accept the Code of Honour to enroll.')}
+    </p>
+  </div>
+</section>
+
+<script language="javascript">
+    $(document).ready(function(){
+        $()
+    }
+</script>
