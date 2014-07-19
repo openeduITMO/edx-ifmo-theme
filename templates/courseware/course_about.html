@@ -128,13 +128,13 @@
 <%
     site_domain = microsite.get_value('site_domain', settings.SITE_NAME)
     platform_name = microsite.get_value('platform_name', settings.PLATFORM_NAME)
-    platform_url = "http://%s".format(site_domain)
+    platform_url = "http://{}".format(site_domain)
     course_url = "{site_domain}{course_location}".format(
-        site_domain=site_domain,
+        site_domain=platform_url,
         course_location=reverse('about_course', args=[course.id])
     )
     course_image = "{site_domain}{course_location}".format(
-        site_domain=site_domain,
+        site_domain=platform_url,
         course_location=course_image_url(course)
     )
     course_title = get_course_about_section(course, 'title')
@@ -142,6 +142,7 @@
         course_url=course_url
     )
     # course_image = static.url(course_image_url(course))
+
 %>
   <script type="text/javascript" src="http://vk.com/js/api/share.js?90" charset="windows-1251"></script>
   <script type="text/javascript">
