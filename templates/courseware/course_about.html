@@ -46,8 +46,8 @@
   (function() {
     $(".register").click(function(event) {
 
-      // TODO Make code of honour acceptance less messy
-      if($('#ifmo-code-of-honour-checkbox').attr('checked') != 'checked') {
+      // TODO Make code of honor acceptance less messy
+      if($('#ifmo-code-of-honor-checkbox').attr('checked') != 'checked') {
         alert('Необходимо принять условия кодекса чести, чтобы зарегистрироваться на курс.')
         event.preventDefault();
         return false;
@@ -236,8 +236,8 @@
           <a href="#" class="register">
             ${_("Register for {course.display_number_with_default}").format(course=course) | h}
           </a>
-          <div id="ifmo-code-of-honour-sub">
-              <input type="checkbox" id="ifmo-code-of-honour-checkbox"><span>&nbsp;${_(u'<i>Я принимаю условия <a href="/honour" target="_blank">Кодекса Чести</a></i>')}</span>
+          <div id="ifmo-code-of-honor-sub">
+              <input type="checkbox" id="ifmo-code-of-honor-checkbox"><span>&nbsp;${_(u'<i>Я принимаю условия <a href="/honor" target="_blank">Кодекса Чести</a></i>')}</span>
           </div>
           <div id="register_error"></div>
         %endif
@@ -415,4 +415,4 @@
 %endif
 
 <%include file="../video_modal.html" />
-<%include file="/modal/_modal-accept-code-of-honour.html" />
+<%include file="/modal/_modal-accept-code-of-honor.html" />
