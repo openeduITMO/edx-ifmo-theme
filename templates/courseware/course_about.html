@@ -172,14 +172,8 @@
 
 <%block name="pagetitle">${_("About {course.display_number_with_default}").format(course=course) | h}</%block>
 
-<%
-    # Logo background class must be hardcoded into template, sass does not support random :3
-    from random import randint
-    background_class = 'ifmo-search-background-b%s' % (randint(0, 1),)
-%>
-
 <section class="course-info">
-  <header class="course-profile ifmo-search ifmo-search-background ${background_class}">
+  <header class="course-profile ifmo-search ifmo-search-background">
     <div class="intro-inner-wrapper">
       <div class="table">
       <section class="intro">

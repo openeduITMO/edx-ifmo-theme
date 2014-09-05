@@ -13,13 +13,7 @@
 
 <section class="find-courses">
 
-<%
-    # Logo background class must be hardcoded into template, sass does not support random :3
-    from random import randint
-    background_class = 'ifmo-search-background-b%s' % (randint(0, 1),)
-%>
-
-  <header class="search ifmo-search ifmo-search-background ifmo-search-background-with-punchline ${background_class}">
+  <header class="search ifmo-search ifmo-search-background ifmo-search-background-with-punchline">
       <div class="ifmo-search-punchline">Learn new anywhere and anytime with comfort!</div>
   </header>
 
