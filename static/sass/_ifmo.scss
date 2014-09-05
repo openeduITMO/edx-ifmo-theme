@@ -42,9 +42,10 @@
   &-search {
 
     &-background {
-      background: center top transparent !important;
+      background-color: transparent !important;
       /*background-size: 100% !important;*/
-      height: 460px !important;
+      background-position: center top !important;
+      /*height: 460px !important;*/
 
       &-b0 {
         background-image: url('../themes/ifmo/images/homepage-bg0.jpg') !important;
