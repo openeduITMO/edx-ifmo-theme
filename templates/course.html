@@ -1,8 +1,3 @@
-##mako
-
-## This is an edited  copy of edx-platform/lms/templates/course.html [30.04.14 @d5029abf]
-## It has additional course_author field injected into display info.
-
 <%namespace name='static' file='static_content.html'/>
 <%!
 from django.utils.translation import ugettext as _
@@ -10,7 +5,7 @@ from django.core.urlresolvers import reverse
 from courseware.courses import course_image_url, get_course_about_section
 %>
 <%page args="course" />
-<article id="${course.id.to_deprecated_string()}" class="course">
+<article id="${course.id | h}" class="course">
   %if course.is_newish:
     <span class="status">${_("New")}</span>
   %endif
@@ -32,7 +27,7 @@ from courseware.courses import course_image_url, get_course_about_section
         <div class="bottom">
           <span class="university">${get_course_about_section(course, 'university')}</span>
           % if not course.start_date_is_still_default:
-          <span class="start-date">${course.start_date_text}</span>
+          <span class="start-date">${course.start_datetime_text()}</span>
           % endif
           % if course.course_author is not None and course.course_author != '':
           <span class="ifmo-course-author">${_('Author')}: ${course.course_author}</span>
