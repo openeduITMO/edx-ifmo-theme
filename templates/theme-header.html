@@ -17,14 +17,21 @@ from django.utils.translation import ugettext as _
   <li class="nav-global-01">
      <a href="/about">${_("About us")}</a>
   </li>
-  <li class="nav-global-01">
+  <li class="nav-global-02">
+     <a href="/faq">${_("FAQ")}</a>
+  </li>
+  <li class="nav-global-03">
      <a href="/partners">${_("Partners")}</a>
   </li>
 </%def>
 
+## This will override "Help" link in dropdown for authenticated user
+<%block name="navigation_dropdown_menu_links" >
+</%block>
+
 <%block name="navigation_global_links_authenticated">
   % if settings.FEATURES.get('COURSES_ARE_BROWSABLE'):
-    <li class="nav-global-01">
+    <li class="nav-global-04">
        <a href="${marketing_link('COURSES')}">${_('Find Courses')}</a>
     </li>
   % endif
