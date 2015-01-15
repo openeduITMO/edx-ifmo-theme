@@ -42,8 +42,9 @@
   &-search {
 
     &-background {
+      background-color: transparent !important;
       background-size: cover !important;
-      background: transparent center top !important;
+      background-position: center top !important;
       /*height: 460px !important;*/
 
       &-b0 {
