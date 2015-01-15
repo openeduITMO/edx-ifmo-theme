@@ -42,9 +42,8 @@
   &-search {
 
     &-background {
-      background-color: transparent !important;
       background-size: cover !important;
-      background-position: center top !important;
+      background: transparent center top !important;
       /*height: 460px !important;*/
 
       &-b0 {
@@ -90,9 +89,6 @@
   }
 
   &-code-of-honor {
-
-
-
   }
 
   &-references {
@@ -102,7 +98,35 @@
 }
 
 
-// Fix for course description in course list do properly display course_author field.
+/*
+    Fix for course description in course list do properly display course_author field.
+*/
 article.course .info div.desc {
   height: 95px !important;
+}
+
+article.course .info div.bottom-wrapper {
+  height: 155px;
+  display: table;
+}
+
+article.course .info div.bottom {
+  height: 100% !important;
+  vertical-align: bottom;
+  display: table-cell;
+}
+
+/*
+    Fix NEW-sign.
+*/
+
+article.course span.status {
+  top: -12px !important;
+}
+
+article.course span.status:after {
+  border-bottom-width: 10px !important;
+  border-right-width: 12px !important;
+  right: -12px !important;
+  top: 2px !important;
 }
