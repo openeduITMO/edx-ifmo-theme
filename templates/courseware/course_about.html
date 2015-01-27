@@ -130,7 +130,7 @@
 <%
     site_domain = microsite.get_value('site_domain', settings.SITE_NAME)
     platform_name = microsite.get_value('platform_name', settings.PLATFORM_NAME)
-    platform_url = "http://{}".format(site_domain)
+    platform_url = "https://{}".format(site_domain)
     course_url = "{site_domain}{course_location}".format(
         site_domain=platform_url,
         course_location=reverse('about_course', args=[course.id])
@@ -146,7 +146,7 @@
     # course_image = static.url(course_image_url(course))
 
 %>
-  <script type="text/javascript" src="http://vk.com/js/api/share.js?90" charset="windows-1251"></script>
+  <script type="text/javascript" src="https://vk.com/js/api/share.js?90" charset="windows-1251"></script>
   <script type="text/javascript">
     $(document).ready(function(){
 	    $("#vkSharer").html(VK.Share.button({
@@ -288,7 +288,7 @@
             ##       or something allowing themes to do whatever they
             ##       want here (and on this whole page, really).
             % if self.stanford_theme_enabled():
-              <a href="http://twitter.com/intent/tweet?text=I+just+registered+for+${course.number}+${get_course_about_section(course, 'title')}!+(http://class.stanford.edu)" class="share">
+              <a href="https://twitter.com/intent/tweet?text=I+just+registered+for+${course.number}+${get_course_about_section(course, 'title')}!+(http://class.stanford.edu)" class="share">
                 <i class="icon fa fa-twitter"></i><span class="sr">Tweet that you've registered for this course</span>
               </a>
               <a href="mailto:?subject=Take%20a%20course%20at%20Stanford%20online!&body=I%20just%20registered%20for%20${course.number}%20${get_course_about_section(course, 'title')}+(http://class.stanford.edu)" class="share">
