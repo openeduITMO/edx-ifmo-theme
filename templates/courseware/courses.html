@@ -21,7 +21,7 @@
     <section class="courses">
       <ul class="courses-listing">
         %for course in courses:
-          % if hasattr(course, 'hidden') and not course.hidden:
+          % if not (hasattr(course, 'hidden') and course.hidden):
         <li class="courses-listing-item">
           <%include file="../course.html" args="course=course" />
         </li>
