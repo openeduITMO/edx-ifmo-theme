@@ -24,9 +24,11 @@
         <section class="courses">
             <ul class="courses-listing">
             %for course in courses:
+                % if hasattr(course, 'hidden') and not course.hidden:
               <li class="courses-listing-item">
                 <%include file="course.html" args="course=course" />
               </li>
+                % endif
             %endfor
             </ul>
         </section>
