@@ -31,6 +31,14 @@
   ## (https://developers.facebook.com/docs/opengraph/howtos/maximizing-distribution-media-content#tags)
   <meta property="og:title" content="${get_course_about_section(course, 'title')}" />
   <meta property="og:description" content="${get_course_about_section(course, 'short_description')}" />
+
+  <meta name="title" content="${get_course_about_section(course, 'title')} | ITMOcourses" />
+  % if hasattr(course, 'meta_description'):
+  <meta name="description" content="${course.meta_description}" />
+  %endif
+  % if hasattr(course, 'meta_keywords'):
+  <meta name="description" content="${course.meta_keywords}" />
+  %endif
 </%block>
 
 <%block name="js_extra">
