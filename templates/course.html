@@ -5,6 +5,12 @@ from django.utils.translation import ngettext as _s
 from django.core.urlresolvers import reverse
 from courseware.courses import course_image_url, get_course_about_section
 %>
+
+<%block name="headextra">
+<meta name="description" content="ITMOcourses ‒ открытое онлайн­обучение ­ это бесплатный доступ для всех желающих к учебным онлайн­курсам, разработанным в Университете ИТМО!">
+<meta name="keywords" content="онлайн курсы бесплатно, курсы итмо, онлайн обучение, обучающие курсы, онлайн образование">
+</%block
+
 <%page args="course" />
 <article id="${course.id | h}" class="course">
   %if course.is_newish:
