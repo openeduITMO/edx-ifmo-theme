@@ -2,8 +2,8 @@
 
 ## TODO Move this to footer
 
-<%include file="/theme-yandex-metrika.html" args="course=course" />
+<%! from django.conf import settings %>
 
-<!--<meta name="title" content='<%block name="page_meta_title" />' />-->
-<!--<meta name="title" content='<%block name="page_meta_description" />' />-->
-<link rel="image_src" href='<%block name="page_meta_image" />' />
+% if settings.SITE_NAME = 'courses.ifmo.ru':
+<%include file="/theme-yandex-metrika.html" args="course=course" />
+% endif
