@@ -4,6 +4,6 @@
 
 <%! from django.conf import settings %>
 
-% if settings.SITE_NAME = 'courses.ifmo.ru':
+% if settings.SITE_NAME == 'courses.ifmo.ru':
 <%include file="/theme-yandex-metrika.html" args="course=course" />
 % endif
