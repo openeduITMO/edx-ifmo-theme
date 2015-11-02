@@ -9,10 +9,6 @@
 
 <%block name="pagetitle">${_("Frequently Asked Questions")}</%block>
 
-<%block name="js_extra">
-<script src="${static.url('js/help.js')}"></script>
-</%block>
-
 ## TODO Move out two legacy classes from here
 <section class="container about ifmo-content static-container help">
 
@@ -169,3 +165,15 @@
 
 
   </section>
+
+<%block name="js_extra">
+<script type="application/javascript">
+    $(document).ready(function() {
+        $('.response').click(function(){
+          $(this).toggleClass('opened');
+          answer = $(this).find(".answer");
+          answer.slideToggle('fast');
+        });
+    });
+</script>
+</%block>
