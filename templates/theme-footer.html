@@ -18,9 +18,12 @@
   >
     <div class="colophon">
 
-      <div class="colophon-about" style="">
+      <div style="display: inline-block; width: 300px; float: left">
         <a href="http://www.ifmo.ru" target="_blank"><img src="${static.url('themes/ifmo/images/logo_mini_footer.png')}" alt="ITMO University" style="width:80px;height:51px;"/></a>
-        <a href="${footer['openedx_link']['url']}" target="_blank"><img src="${footer['openedx_link']['image']}" alt="Open edX" style="width:140px;"/></a>
+        <a href="${footer['openedx_link']['url']}" target="_blank"><img src="${footer['openedx_link']['image']}" alt="Open edX" style="height:51px;"/></a>
+      </div>
+
+      <div class="colophon-about" style="display: inline-block">
         <p style="color:#999;">
             <a href="http://www.ifmo.ru" target="_blank">ITMO University</a><br/>
             <a href="http://de.ifmo.ru" target="_blank">Distance Learning Center</a><br/>
@@ -31,7 +34,7 @@
     </div>
 
 
-    <div class="footer-ifmo-links references ifmo-references" style="">
+    <div class="footer-ifmo-links references ifmo-references" style="float: right;">
         <nav class="ifmo-footer-nav">
             <a href="http://vk.com/elearning.itmo"><img src="${static.url('themes/ifmo/images/social/footer/VK.png')}" alt="VK"/></a>
             <a href="https://plus.google.com/112003577328778744296" rel="publisher"><img src="${static.url('themes/ifmo/images/social/footer/google.png')}" alt="Google Plus"/></a>
