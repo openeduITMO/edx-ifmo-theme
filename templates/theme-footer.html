@@ -16,10 +16,37 @@
       dir=${bidi}
     % endif
   >
+      <style type="text/css">
+          div.ifmo-footer-logos a {
+              text-decoration: none !important;
+          }
+          div.ifmo-footer-logos a:hover {
+              text-decoration: none !important;
+          }
+          div.ifmo-footer-logos a.ifmo-footer-ifmo {
+              text-decoration: none;
+              padding-right: 30px;
+              display: inline-block;
+              border-right: 1px solid #1946BA;
+          }
+          div.ifmo-footer-logos img.ifmo-footer-ifmo {
+              width: 80px;
+              height: 51px;
+          }
+          div.ifmo-footer-logos a.ifmo-footer-edx {
+              text-decoration: none;
+              display: inline-block;
+              padding-left: 25px;
+          }
+          div.ifmo-footer-logos img.ifmo-footer-edx {
+              height: 51px;
+          }
+      </style>
+
     <div class="colophon" style="width: auto">
 
-      <div style="display: inline-block; float: left">
-        <a href="http://www.ifmo.ru" target="_blank" style="text-decoration: none; padding-right: 30px; display: inline-block; border-right: 1px solid #1946BA;"><img src="${static.url('themes/ifmo/images/logo_mini_footer.png')}" alt="ITMO University" style="width:80px;height:51px;"/></a><a href="${footer['openedx_link']['url']}" target="_blank" style="text-decoration: none; display: inline-block; padding-left: 30px; padding-right: 30px;"><img src="${footer['openedx_link']['image']}" alt="Open edX" style="height:51px;"/></a>
+      <div style="display: inline-block; float: left" class="ifmo-footer-logos">
+        <a href="http://www.ifmo.ru" target="_blank" class="ifmo-footer-ifmo"><img src="${static.url('themes/ifmo/images/logo_mini_footer.png')}" alt="ITMO University" class="ifmo-footer-ifmo"/></a><a href="${footer['openedx_link']['url']}" target="_blank" class="ifmo-footer-edx"><img src="${footer['openedx_link']['image']}" alt="Open edX" class="ifmo-footer-edx"/></a>
       </div>
 
       <div class="colophon-about" style="display: inline-block; width: 455px;">
