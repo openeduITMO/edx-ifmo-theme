@@ -16,14 +16,14 @@
       dir=${bidi}
     % endif
   >
-    <div class="colophon">
+    <div class="colophon" style="width: auto">
 
-      <div style="display: inline-block; width: 300px; float: left">
-        <a href="http://www.ifmo.ru" target="_blank"><img src="${static.url('themes/ifmo/images/logo_mini_footer.png')}" alt="ITMO University" style="width:80px;height:51px;"/></a>
-        <a href="${footer['openedx_link']['url']}" target="_blank"><img src="${footer['openedx_link']['image']}" alt="Open edX" style="height:51px;"/></a>
+      <div style="display: inline-block; float: left">
+        <a href="http://www.ifmo.ru" target="_blank" style="text-decoration: none;"><img src="${static.url('themes/ifmo/images/logo_mini_footer.png')}" alt="ITMO University" style="width:80px;height:51px;"/></a>
+        <a href="${footer['openedx_link']['url']}" target="_blank" style="text-decoration: none;"><img src="${footer['openedx_link']['image']}" alt="Open edX" style="height:51px;"/></a>
       </div>
 
-      <div class="colophon-about" style="display: inline-block">
+      <div class="colophon-about" style="display: inline-block; width: 455px;">
         <p style="color:#999;">
             <a href="http://www.ifmo.ru" target="_blank">ITMO University</a><br/>
             <a href="http://de.ifmo.ru" target="_blank">Distance Learning Center</a><br/>
@@ -34,7 +34,7 @@
     </div>
 
 
-    <div class="footer-ifmo-links references ifmo-references" style="float: right;">
+    <div class="footer-ifmo-links references ifmo-references" style="float: right; width: auto">
         <nav class="ifmo-footer-nav">
             <a href="http://vk.com/elearning.itmo"><img src="${static.url('themes/ifmo/images/social/footer/VK.png')}" alt="VK"/></a>
             <a href="https://plus.google.com/112003577328778744296" rel="publisher"><img src="${static.url('themes/ifmo/images/social/footer/google.png')}" alt="Google Plus"/></a>
