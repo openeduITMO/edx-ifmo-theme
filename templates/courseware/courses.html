@@ -86,7 +86,7 @@
     <section class="courses${'' if course_discovery_enabled else ' no-course-discovery'}">
       <ul class="courses-listing">
         %for course in courses:
-          %if not course.is_hidden:
+          %if not getattr(course, 'hidden', False):
             <li class="courses-listing-item">
               <%include file="../course.html" args="course=course" />
             </li>
