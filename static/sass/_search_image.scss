@@ -1,0 +1,52 @@
+/*
+    Картинка поиска на страницах с курсами:
+      /
+      /courses
+      /course/.../about
+*/
+.ifmo {
+
+  &-search {
+
+    &-background {
+      background: transparent center top !important;
+      background-size: cover !important;
+      -o-background-size: cover !important;
+      -moz-background-size: cover !important;
+      -webkit-background-size: cover !important;
+      /*height: 460px !important;*/
+
+      &-b0 {
+        background-image: url('../themes/ifmo/images/homepage-bg0.jpg') !important;
+      }
+
+      &-b1 {
+        background-image: url('../themes/ifmo/images/homepage-bg1.jpg') !important;
+      }
+
+      &-b2 {
+        background-image: url('../themes/ifmo/images/logo_header_3_2.png') !important;
+      }
+
+      &-b3 {
+        background-image: url('../themes/ifmo/images/logo_header_3_1.png') !important;
+      }
+
+      &-with-punchline {
+        margin-top: 0 !important;
+      }
+
+    }
+
+    &-punchline {
+      width: 100%;
+      background: rgba(30,30,30,0.9);
+      color: #eee;
+      font-size: 1.5em;
+      text-align: center;
+      padding: 1em 0;
+    }
+
+  }
+
+}

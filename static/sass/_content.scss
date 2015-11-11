@@ -1,0 +1,35 @@
+/*
+    Контент статических страниц:
+      /faq
+      /tos
+      /honor
+      /about
+*/
+
+.ifmo {
+
+  &-content {
+
+    p {
+      color:#3C3C3C;
+      font: normal 1em/1.6em sans;
+      text-align:justify;
+    }
+
+    ul {
+      list-style-type: disc;
+
+      li {
+        // TODO Why this needs to be important?
+        font: normal 1em/1.6em sans !important;
+      }
+
+    }
+
+    td {
+      padding: 20px;
+    }
+
+  }
+
+}

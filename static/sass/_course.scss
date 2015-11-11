@@ -1,0 +1,57 @@
+/*
+    Курс на странице с плитками:
+      /
+      /courses
+*/
+
+.ifmo {
+
+  &-course {
+
+    &-author {
+      display: block;
+      color: #646464;
+      letter-spacing: 1px;
+    }
+
+    // Название курса на странице с плиткой курсов
+    &-title {
+      letter-spacing: 0;
+    }
+
+  }
+
+}
+
+/*
+    Fix for course description in course list do properly display course_author field.
+*/
+article.course .info div.desc {
+  height: 95px !important;
+}
+
+article.course .info div.bottom-wrapper {
+  height: 155px;
+  display: table;
+}
+
+article.course .info div.bottom {
+  height: 100% !important;
+  vertical-align: bottom;
+  display: table-cell;
+}
+
+/*
+    Fix NEW-sign.
+*/
+
+article.course span.status {
+  top: -15px !important;
+}
+
+article.course span.status:after {
+  border-bottom-width: 14px !important;
+  border-right-width: 15px !important;
+  right: -15px !important;
+  top: 1px !important;
+}

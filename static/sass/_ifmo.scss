@@ -5,81 +5,6 @@
     width: auto;
   }
 
-  &-content {
-
-    p {
-      color:#3C3C3C;
-      font: normal 1em/1.6em sans;
-      text-align:justify;
-    }
-
-    ul {
-      list-style-type: disc;
-
-      li {
-        // TODO Why this needs to be important?
-        font: normal 1em/1.6em sans !important;
-      }
-
-    }
-
-    td {
-      padding: 20px;
-    }
-
-  }
-
-  &-course {
-
-    &-author {
-      display: block;
-      color: #646464;
-      letter-spacing: 1px;
-    }
-
-  }
-
-  &-search {
-
-    &-background {
-      background-color: transparent !important;
-      background-size: cover !important;
-      background-position: center top !important;
-      /*height: 460px !important;*/
-
-      &-b0 {
-        background-image: url('../themes/ifmo/images/homepage-bg0.jpg') !important;
-      }
-
-      &-b1 {
-        background-image: url('../themes/ifmo/images/homepage-bg1.jpg') !important;
-      }
-
-      &-b2 {
-        background-image: url('../themes/ifmo/images/logo_header_3_2.png') !important;
-      }
-
-      &-b3 {
-        background-image: url('../themes/ifmo/images/logo_header_3_1.png') !important;
-      }
-
-      &-with-punchline {
-        margin-top: 0px !important;
-      }
-
-    }
-
-    &-punchline {
-      width: 100%;
-      background: rgba(30,30,30,0.9);
-      color: #eee;
-      font-size: 1.5em;
-      text-align: center;
-      padding: 1em 0em;
-    }
-
-  }
-
   &-modal {
 
     &-text {
@@ -89,51 +14,12 @@
 
   }
 
-  &-code-of-honor {
-  }
-
   &-references {
-    margin: 0px !important;
+    margin: 0 !important;
   }
 
 }
 
-
-/*
-    Fix for course description in course list do properly display course_author field.
-*/
-article.course .info div.desc {
-  height: 95px !important;
-}
-
-article.course .info div.bottom-wrapper {
-  height: 155px;
-  display: table;
-}
-
-article.course .info div.bottom {
-  height: 100% !important;
-  vertical-align: bottom;
-  display: table-cell;
-}
-
-/*
-    Fix NEW-sign.
-*/
-
-article.course span.status {
-  top: -15px !important;
-}
-
-article.course span.status:after {
-  border-bottom-width: 14px !important;
-  border-right-width: 15px !important;
-  right: -15px !important;
-  top: 1px !important;
-}
-
-
-/* Расстояние между буквами, чтобы строчки не расползались */
-.h2 .course-title {
-  letter-spacing: 0;
-}
+@import "search_image";
+@import "content";
+@import "course";
