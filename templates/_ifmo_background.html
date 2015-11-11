@@ -1,0 +1,24 @@
+<%namespace name='static' file='static_content.html'/>
+
+<!-- If user browser does not support javascript and bg randomization -->
+<noscript>
+    <style type="text/css">
+    header.ifmo-search-background {
+        background-image: url("${static.url('themes/ifmo/images/logo_header_3_2.png')}") !important;
+    }
+    </style>
+</noscript>
+
+<%block name="js_extra">
+<script language="JavaScript">
+    // Add random background class to "search" panel
+    $(document).ready(function(){
+        var bgEl = $('.ifmo-search-background');
+        if (bgEl.length) {
+            var bgCount = 4;
+            var bgId = Math.floor(Math.random() * bgCount);
+            bgEl.addClass('ifmo-search-background-b' + bgId);
+        }
+    });
+</script>
+</%block>

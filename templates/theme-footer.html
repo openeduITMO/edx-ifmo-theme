@@ -1,66 +1,99 @@
 ## mako
+<%!
+  from django.core.urlresolvers import reverse
+  from django.utils.translation import ugettext as _
+  from branding.api import get_footer
+%>
+<% footer = get_footer(is_secure=is_secure) %>
+<%namespace name='static' file='static_content.html'/>
 
-<%namespace name='static' file='/static_content.html'/>
-
-## TODO Move all these style definitions to sass
 <div class="wrapper wrapper-footer">
-  <footer>
-    <div class="colophon">
+  <footer id="footer-openedx"
+    ## When rendering the footer through the branding API,
+    ## the direction may not be set on the parent element,
+    ## so we set it here.
+    % if bidi:
+      dir=${bidi}
+    % endif
+  >
+      <style type="text/css">
+          div.ifmo-footer-logos a {
+              text-decoration: none !important;
+              border-bottom: none !important;
+          }
+          div.ifmo-footer-logos a:hover {
+              text-decoration: none !important;
+          }
+          div.ifmo-footer-logos a.ifmo-footer-ifmo {
+              text-decoration: none;
+              padding-right: 30px;
+              display: inline-block;
+              border-right: 1px solid #1946BA;
+          }
+          div.ifmo-footer-logos img.ifmo-footer-ifmo {
+              width: 80px;
+              height: 51px;
+          }
+          div.ifmo-footer-logos a.ifmo-footer-edx {
+              text-decoration: none;
+              display: inline-block;
+              padding-left: 25px;
+          }
+          div.ifmo-footer-logos img.ifmo-footer-edx {
+              height: 51px;
+          }
+      </style>
 
-      <div class="colophon-about" >
-        <a href="http://www.ifmo.ru" target="_blank" style="width:60px;height:51px;"><img src="${static.url('themes/ifmo/images/logo_mini_footer.png')}" alt="ITMO logo" style="width:80px;height:51px;"/></a>
-        <p style="color:#999; width:80%;">Saint-Petersburg National Research University of Information Technologies, Mechanics and Optics<br/>Distance Learning Center</p>
-      </div>  
+    <div class="colophon" style="width: auto">
+
+      <div style="display: inline-block; float: left" class="ifmo-footer-logos">
+        <a href="http://www.ifmo.ru" target="_blank" class="ifmo-footer-ifmo"><img src="${static.url('themes/ifmo/images/logo_mini_footer.png')}" alt="ITMO University" class="ifmo-footer-ifmo"/></a><a href="${footer['openedx_link']['url']}" target="_blank" class="ifmo-footer-edx"><img src="${footer['openedx_link']['image']}" alt="Open edX" class="ifmo-footer-edx"/></a>
+      </div>
+
+      <div class="colophon-about" style="display: inline-block; width: 455px;">
+        <p style="color:#999; background: none">
+            <a href="http://www.ifmo.ru" target="_blank">ITMO University</a><br/>
+            <a href="http://de.ifmo.ru" target="_blank">Distance Learning Center</a><br/>
+            © ITMOcourses. All rights reserved except where noted
+        </p>
+      </div>
 
     </div>
- 
-    <div class="references ifmo-references" style="margin: 0px !important;">
 
-      <!-- <p class="copyright">&copy; 2013 ITMOcources, some rights reserved.</p> -->
 
-      <nav>
-          <a href="http://vk.com/elearning.itmo"><img src="${static.url('themes/ifmo/images/social/footer/VK.png')}" alt="VK"/></a>
-          <a href="https://plus.google.com/112003577328778744296" rel="publisher"><img src="${static.url('themes/ifmo/images/social/footer/google.png')}" alt="Google Plus"/></a>
-          <a href="https://www.facebook.com/elearning.itmo"><img src="${static.url('themes/ifmo/images/social/footer/facebook.png')}" alt="Facebook"/></a>
-          <a href="https://twitter.com/elearning_itmo"><img src="${static.url('themes/ifmo/images/social/footer/twitter.png')}" alt="Twitter"/></a>
-          <!-- <a href="http://www.youtube.com/user/openITMO"><img src="${static.url('themes/ifmo/images/social/footer/youtube.png')}" alt="Youtube"/></a> -->
-          <a href="http://www.ustream.tv/channel/openITMO"><img src="${static.url('themes/ifmo/images/social/footer/ustream.png')}" alt="ustream"/></a>
-      </nav>
-
-      <nav class="nav-legal">
-        <ul>
-          <li class="nav-legal-01">
-            <a href="/honor">Code of honor</a>
-	  </li>
-	  <li class="nav-legal-02">
-            <a href="/tos">Terms of Service</a>
-	  </li>
-        </ul>
-      </nav>
-
+    <div class="footer-ifmo-links references ifmo-references" style="float: right; width: auto">
+        <nav class="ifmo-footer-nav">
+            <a href="http://vk.com/elearning.itmo"><img src="${static.url('themes/ifmo/images/social/footer/VK.png')}" alt="VK"/></a>
+            <a href="https://plus.google.com/112003577328778744296" rel="publisher"><img src="${static.url('themes/ifmo/images/social/footer/google.png')}" alt="Google Plus"/></a>
+            <a href="https://www.facebook.com/elearning.itmo"><img src="${static.url('themes/ifmo/images/social/footer/facebook.png')}" alt="Facebook"/></a>
+            <a href="https://twitter.com/elearning_itmo"><img src="${static.url('themes/ifmo/images/social/footer/twitter.png')}" alt="Twitter"/></a>
+            <!-- <a href="http://www.youtube.com/user/openITMO"><img src="${static.url('themes/ifmo/images/social/footer/youtube.png')}" alt="Youtube"/></a> -->
+            <a href="http://www.ustream.tv/channel/openITMO"><img src="${static.url('themes/ifmo/images/social/footer/ustream.png')}" alt="ustream"/></a>
+        </nav>
+        <div class="ifmo-footer-honor">
+            <nav class="nav-legal" aria-label="${_('Legal')}">
+                <ul>
+                    <li class="nav-legal-01">
+                        <a href="/honor">Code of honor</a>
+                    </li>
+                    <li class="nav-legal-02">
+                        <a href="/tos">Terms of Service</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
     </div>
+
   </footer>
 </div>
 
-<!-- If user browser does not support javascript and bg randomization -->
-<noscript>
-    <style type="text/css">
-    header.ifmo-search-background {
-        background-image: url("${static.url('themes/ifmo/images/logo_header_3_2.png')}") !important;
-    }
-    </style>
-</noscript>
-
-<%block name="js_extra">
-<script language="JavaScript">
-    // Add random background class to "search" panel
-    $(document).ready(function(){
-        var bgEl = $('.ifmo-search-background');
-        if (bgEl.length) {
-            var bgCount = 4;
-            var bgId = Math.floor(Math.random() * bgCount);
-            bgEl.addClass('ifmo-search-background-b' + bgId);
-        }
-    });
-</script>
-</%block>
+% if include_dependencies:
+  <%static:js group='base_vendor'/>
+  <%static:css group='style-vendor'/>
+  <%include file="widgets/segment-io.html" />
+% endif
+% if footer_css_urls:
+  % for url in footer_css_urls:
+    <link rel="stylesheet" type="text/css" href="${url}"></link>
+  % endfor
+% endif

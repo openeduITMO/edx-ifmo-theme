@@ -1,7 +1,7 @@
 .ifmo {
 
   &-logo {
-    height: 47;
+    height: 47px;
     width: auto;
   }
 
@@ -130,4 +130,10 @@ article.course span.status:after {
   border-right-width: 15px !important;
   right: -15px !important;
   top: 1px !important;
+}
+
+
+/* Расстояние между буквами, чтобы строчки не расползались */
+.h2 .course-title {
+  letter-spacing: 0;
 }
