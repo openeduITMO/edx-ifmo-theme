@@ -21,7 +21,70 @@
 
   }
 
+  &-author {
+
+    &-container {
+      height: 120px;
+      position: absolute;
+      top: $baseline;
+      color: #fff;
+      z-index: 100;
+      width: 100%;
+      overflow: hidden;
+      padding-left: $baseline;
+      padding-right: $baseline;
+      box-sizing: border-box;
+      opacity: 0;
+    }
+
+    &-filler {
+      display:  inline-block;
+      height: 100%;
+      vertical-align: middle;
+      font-size: 0;
+    }
+
+    &-data {
+      display:  inline-block;
+      vertical-align: middle;
+      line-height: $baseline;
+
+      span {
+        color:  #fff;
+      }
+
+      p {
+        color: #fff;
+        font: normal 1em/1.6em "Open Sans",Verdana,Geneva,sans-serif,sans-serif;
+        width: 100%;
+        padding-left: $baseline;
+        box-sizing: border-box;
+      }
+
+    }
+
+  }
+
 }
+
+.course {
+
+  &:hover,
+  &:focus {
+    .ifmo-author-container {
+      @include transition(opacity $tmg-f2 ease-out $tmg-f2);
+      opacity: 1;
+    }
+    .cover-image {
+      &:before {
+        opacity: 0.75 !important;
+      }
+    }
+  }
+
+}
+
+
 
 /*
     Fix for course description in course list do properly display course_author field.
