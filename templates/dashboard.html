@@ -47,6 +47,7 @@ from django.core.urlresolvers import reverse
   % if settings.FEATURES.get('ENABLE_DASHBOARD_SEARCH'):
     <%static:js group='dashboard_search'/>
   % endif
+  <script type="text/javascript" src="${static.url('themes/ifmo/js/ifmo-dashboard.js')}"></script>
 </%block>
 
 <div class="dashboard-notifications" tabindex="-1">
@@ -66,7 +67,12 @@ from django.core.urlresolvers import reverse
 <section class="container dashboard" id="dashboard-main">
   <section class="my-courses" id="my-courses" role="main" aria-label="Content">
     <header class="wrapper-header-courses">
-      <h2 class="header-courses">${_("Current Courses")}</h2>
+      <!--<h2 class="header-courses">${_("Current Courses")}</h2>-->
+      <h2 class="header-courses ifmo-courses-header">
+        <span class="ifmo-tab" data-ifmo-new-state="current"><a href="#">${_("Current Courses")}</a></span>
+        <span class="ifmo-tab" data-ifmo-new-state="upcoming"><a href="#">${_("Upcoming Courses")}</a></span>
+        <span class="ifmo-tab" data-ifmo-new-state="archived"><a href="#">${_("Archived Courses")}</a></span>
+      </h2>
     </header>
 
 
