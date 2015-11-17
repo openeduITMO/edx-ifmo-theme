@@ -1,0 +1,16 @@
+#ifmo-code-of-honor-sub {
+
+  margin: $baseline/2;
+
+  a {
+    font-style: italic;
+    font-family: inherit;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+  }
+
+
+}
