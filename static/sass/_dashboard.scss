@@ -1,0 +1,29 @@
+.ifmo-courses-header {
+
+  span {
+      /* TODO: fill parent here */
+      display: none;
+      width: 30%;
+    }
+
+  a {
+    color: #3c3c3c !important;
+    text-decoration: none !important;
+
+    &:hover {
+      text-decoration: none;
+      border-bottom: 2px solid;
+    }
+
+    &.active {
+      color: #0078b0 !important;
+    }
+
+  }
+
+}
+
+// По умолчанию прячем все курсы
+li.course-item {
+  display: none;
+}
