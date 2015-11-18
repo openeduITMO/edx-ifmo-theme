@@ -10,11 +10,11 @@ $(document).ready(function(){
     }
 
     function show_only_by_attr($elems, attr, attr_value){
-        $elems.filter(":not(["+attr+"='"+attr_value+"'])").hide();
+        $elems.filter(":not(["+attr+"='"+attr_value+"'])").parent().hide();
     }
 
     function apply_filters(){
-        $courses.show();
+        $courses.parent().show();
         filters.forEach(function(filter){
             show_only_by_attr($courses, filter["attr_name"], filter["value"]);
         })
