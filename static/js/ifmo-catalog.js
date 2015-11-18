@@ -1,9 +1,12 @@
 $(document).ready(function(){
     function delete_from_filter(element){
-        var index = filters.indexOf(element);
-        if (index > -1) {
-            filters.splice(index, 1);
+        var new_filter = [];
+        for(var i = 0; i<filters.length; i++){
+            if (filters[i]["attr_name"] != element["attr_name"]){
+                new_filter.push(filters[i]);
+            }
         }
+        filters = new_filter;
     }
 
     function show_only_by_attr($elems, attr, attr_value){
