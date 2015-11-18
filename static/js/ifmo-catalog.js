@@ -25,6 +25,7 @@ $(document).ready(function(){
 
             if($(this).hasClass("highlighted")) {
                 delete_from_filter(filter_element);
+                $(this).removeClass("highlighted");
                 $elems.show();
                 $courses.show();
             }else{
