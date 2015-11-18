@@ -3,7 +3,7 @@
 from django.utils.translation import ugettext as _, ungettext as _s
 from django.core.urlresolvers import reverse
 from courseware.courses import course_image_url, get_course_about_section
-#IFMO from ifmo_catalog.utils import get_course_subject
+from ifmo_catalog.utils import get_course_subject
 %>
 <%page args="course" />
 <%
@@ -13,10 +13,10 @@ from courseware.courses import course_image_url, get_course_about_section
     course_state = "started"
   else:
     course_state = "upcoming"
-  #IFMO course_subject = get_course_subject(course)
+  course_subject = get_course_subject(course)
 %>
 <!--IFMO Добавить data-ifmo-course-subject -->
-<article class="course" id="${course.id | h}" role="region" aria-label="${get_course_about_section(course, 'title')}" data-ifmo-course-state="${course_state}">
+<article class="course" id="${course.id | h}" role="region" aria-label="${get_course_about_section(course, 'title')}" data-ifmo-course-state="${course_state}" data-ifmo-course-subject="${course_subject}">
   <a href="${reverse('about_course', args=[course.id.to_deprecated_string()])}">
     <header class="course-image">
       <div class="cover-image">

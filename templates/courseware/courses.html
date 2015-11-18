@@ -2,7 +2,7 @@
   import json
   from django.utils.translation import ugettext as _
   from microsite_configuration import microsite
-  #IFMO from ifmo_catalog.utils import get_all_subjects
+  from ifmo_catalog.utils import get_all_subjects
 %>
 <%inherit file="../main.html" />
 
@@ -55,8 +55,8 @@
     )
 
     logo_alt_text = _("{platform_name} Logo").format(platform_name=platform_name)
-    subjects = ["math", "programming"]
-    #IFMO subjects = get_all_subjects()
+    #subjects = ["math", "programming"]
+    subjects = get_all_subjects()
 %>
 
 <section class="find-courses">
