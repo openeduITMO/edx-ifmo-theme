@@ -4,6 +4,7 @@
 from django.utils.translation import ugettext as _
 from django.core.urlresolvers import reverse
 from microsite_configuration import microsite
+from ifmo_catalog.utils import get_courses_availability
 %>
 
 <%
@@ -15,6 +16,8 @@ from microsite_configuration import microsite
 
   show_partners = microsite.get_value('show_partners', True)
 
+  upcoming_courses_exist, current_courses_exist = get_courses_availability(request.user)
+  index_courses = [i for i in courses[:settings.HOMEPAGE_COURSE_MAX] if not getattr(i, 'hidden', False)]
 %>
 
 <section class="home">
@@ -27,16 +30,45 @@ from microsite_configuration import microsite
     <section class="highlighted-courses">
 
       % if settings.FEATURES.get('COURSES_ARE_BROWSABLE'):
+        <!-- upcoming -->
+        % if upcoming_courses_exist:
         <section class="courses">
             <ul class="courses-listing">
             ## limiting the course number by using HOMEPAGE_COURSE_MAX as the maximum number of courses
-            %for course in [i for i in courses[:settings.HOMEPAGE_COURSE_MAX] if not getattr(i, 'hidden', False)]:
+            %for course in [c for c in index_courses if not c.has_started()]:
               <li class="courses-listing-item">
                 <%include file="course.html" args="course=course" />
               </li>
             %endfor
             </ul>
         </section>
+        % endif
+        <!-- current -->
+        % if current_courses_exist:
+        <section class="courses">
+            <ul class="courses-listing">
+            ## limiting the course number by using HOMEPAGE_COURSE_MAX as the maximum number of courses
+            %for course in [c for c in index_courses if c.has_started() and not c.has_ended()]:
+              <li class="courses-listing-item">
+                <%include file="course.html" args="course=course" />
+              </li>
+            %endfor
+            </ul>
+        </section>
+        % endif
+        <!-- archived -->
+        % if not (current_courses_exist or current_courses_exist):
+        <section class="courses">
+            <ul class="courses-listing">
+            ## limiting the course number by using HOMEPAGE_COURSE_MAX as the maximum number of courses
+            %for course in [c for c in index_courses if c.has_ended()]:
+              <li class="courses-listing-item">
+                <%include file="course.html" args="course=course" />
+              </li>
+            %endfor
+            </ul>
+        </section>
+        % endif
         ## in case there are courses that are not shown on the homepage, a 'View all Courses' link should appear
         % if settings.HOMEPAGE_COURSE_MAX and len(courses) > settings.HOMEPAGE_COURSE_MAX:
           <div class="courses-more">
