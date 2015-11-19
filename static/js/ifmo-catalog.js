@@ -45,12 +45,12 @@ $(document).ready(function(){
     }
 
     var $time_filters = $(".time-filters li");
-    var $subject_filters = $(".subject-filters");
+    var $category_filters = $(".category-filters");
     var $courses = $(".course");
     var filters = [];
 
     set_filter_event($time_filters, "data-ifmo-course-state");
-    $subject_filters.each(function(){
-        set_filter_event($(this).find("li"), "data-ifmo-course-subject");
+    $category_filters.each(function(){
+        set_filter_event($(this).find("li"), "data-ifmo-course-categories");
     });
 });
