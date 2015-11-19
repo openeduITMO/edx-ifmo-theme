@@ -2,7 +2,7 @@
   import json
   from django.utils.translation import ugettext as _
   from microsite_configuration import microsite
-  from ifmo_catalog.utils import get_all_subjects
+  from ifmo_catalog.utils import get_all_categories
 %>
 <%inherit file="../main.html" />
 
@@ -55,8 +55,7 @@
     )
 
     logo_alt_text = _("{platform_name} Logo").format(platform_name=platform_name)
-    #subjects = ["math", "programming"]
-    subjects = get_all_subjects()
+    categories = get_all_categories()
 %>
 
 <section class="find-courses">
@@ -101,14 +100,14 @@
                                 <li filter="ended">Archived</li>
                             </ul>
                         </li>
-                        %for subject in subjects:
-                            %if subject.subject_set.all():
+                        %for category in categories:
+                            %if category.category_set.all():
                             <hr>
                             <li>
-                                <h4>${subject.name}</h4>
-                                <ul class="subject-filters">
-                                    %for child in subject.subject_set.all():
-                                        <li filter="${child.name}">${child.name}</li>
+                                <h4>${category.name}</h4>
+                                <ul class="category-filters">
+                                    %for child in category.category_set.all():
+                                        <li filter="${child.id}">${child.name}</li>
                                     %endfor
                                 </ul>
                             </li>
