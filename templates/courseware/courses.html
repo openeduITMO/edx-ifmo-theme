@@ -87,9 +87,9 @@
     </div>
     % endif
 
-        <section class="courses-and-catalog-container">
-            <section class="catalog-container">
-                <div class="catalog">
+        <section class="ifmo-courses-and-catalog-container">
+            <section class="ifmo-catalog-container">
+                <div class="ifmo-catalog">
                     <h3>Search</h3>
                     <hr>
                     <ul>
@@ -118,11 +118,11 @@
                 </div>
             </section>
 
-            <section class="courses${'' if course_discovery_enabled else ' no-course-discovery'}">
+            <section class="courses${'' if course_discovery_enabled else ' no-course-discovery'} ifmo-override">
                 <ul class="courses-listing ifmo-listing">
                     %for course in courses:
                         %if not getattr(course, 'hidden', False):
-                            <li class="courses-listing-item-custom">
+                            <li class="ifmo-courses-listing-item">
                                     <%include file="../course.html" args="course=course" />
                             </li>
                         %endif

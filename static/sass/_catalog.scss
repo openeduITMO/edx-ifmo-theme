@@ -1,73 +1,92 @@
-$bp-medium: "(max-width: 768px)";
-$bp-large: "(min-width: 769px) and (max-width: 979px)";
-$bp-huge: "(min-width: 980px)";
+// Переопределение сетки курсов на странице поиска, на
+// курсы приходится на одну колонку меньше, одна колонка
+// отведена под список категорий.
+.find-courses .courses-container .ifmo-courses-and-catalog-container .courses .courses-listing {
 
-@mixin ifmo-listing-item($size, $cols) {
-  @media screen and #{$size} {
-    .courses-listing-item-custom {
-      margin: 0 10%/($cols*2) !important;
-      width: 90%/$cols;
+  .ifmo-courses-listing-item {
+
+    @include media($bp-medium) {
+      @include span-columns(8); // 4 of 8
+      @include omega(1n);
     }
+
+    @include media($bp-large) {
+      @include span-columns(6); // 4 of 12
+      @include omega(2n);
+    }
+
+    @include media($bp-huge) {
+      @include span-columns(4); // 3 of 12
+      @include omega(3n);
+    }
+
   }
+
 }
 
-@include ifmo-listing-item($bp-medium, 1);
-@include ifmo-listing-item($bp-large, 2);
-@include ifmo-listing-item($bp-huge, 3);
-
-.ifmo-listing{
-  display: flex;
-  flex-wrap: wrap;
+// Контейнер колонки с категориями и контейнера курсов.
+.find-courses .courses-container .ifmo-courses-and-catalog-container {
+  @include outer-container;
 }
 
-.courses-and-catalog-container{
-  display: flex;
+// Выделенная кололнка под категории.
+.find-courses .courses-container .ifmo-courses-and-catalog-container .ifmo-catalog-container {
 
-  .catalog-container{
-    padding-top: 40px;
-    width: 300px;
+  @include media($bp-medium) {
+    @include span-columns(4); // 4 of 8
+  }
 
-    .catalog{
-      box-shadow: 0 1px 10px 0 rgba(0,0,0,0.125),inset 0 0 0 1px rgba(255,255,255,0.75);
-      background: #fafafa;
-      border: 1px solid #bebebe;
-      border-radius: 2px;
+  @include media($bp-large) {
+    @include span-columns(4); // 4 of 12
+  }
 
-      h3{
-        font-weight: bold;
-        margin: 8px;
-        font-family: 'Open Sans',Verdana,Geneva,sans-serif,sans-serif;
-      }
+  @include media($bp-huge) {
+    @include span-columns(3); // 3 of 12
+  }
 
-      hr{
-        margin: 8px 0;
-      }
+  padding-top: 40px;
 
-      ul{
-        list-style: none;
-        padding: 0;
+  .ifmo-catalog {
+    box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.125), inset 0 0 0 1px rgba(255, 255, 255, 0.75);
+    background: #fafafa;
+    border: 1px solid #bebebe;
+    border-radius: 2px;
 
-        ul{
-          margin: 5px 0;
+    h3 {
+      font-weight: bold;
+      margin: 8px;
+      font-family: 'Open Sans', Verdana, Geneva, sans-serif, sans-serif;
+    }
 
-          li{
-            font-size: 15px;
-            padding-left: 12px;
-            padding-top: 3px;
-            padding-bottom: 3px;
+    hr {
+      margin: 8px 0;
+    }
 
-            &.highlighted{
-              background-color: #0078b0;
-              color: white;
-            }
+    ul {
+      list-style: none;
+      padding: 0;
 
-            &:hover{
-              background-color: #0078b0;
-              color: white;
-            }
+      ul {
+        margin: 5px 0;
+
+        li {
+          font-size: 13px;
+          padding-left: 12px;
+          padding-top: 3px;
+          padding-bottom: 3px;
+
+          &.highlighted {
+            background-color: #0078b0;
+            color: white;
+          }
+
+          &:hover {
+            background-color: #0078b0;
+            color: white;
           }
         }
       }
+    }
 
       h4{
         font-family: 'Open Sans',Verdana,Geneva,sans-serif,sans-serif;
@@ -77,6 +96,21 @@ $bp-huge: "(min-width: 980px)";
       }
     }
   }
+
+// Контейнер с курсами.
+.find-courses .courses-container .ifmo-courses-and-catalog-container .courses.ifmo-override {
+
+  @include media($bp-medium) {
+    @include span-columns(4); // 4 of 8
+  }
+
+  @include media($bp-large) {
+    @include span-columns(8); // 4 of 12
+  }
+
+  @include media($bp-huge) {
+    @include span-columns(9); // 3 of 12
+  }
+  @include omega();
+
 }
-
-
