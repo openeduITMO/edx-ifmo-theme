@@ -107,7 +107,7 @@
                             <li>
                                 <h4>${subject.name}</h4>
                                 <ul class="subject-filters">
-                                    %for child in subject.subject_set.all():
+                                    %for child in sorted(subject.subject_set.all(), key=lambda c: c.priority, reverse=True):
                                         <li filter="${child.name}">${child.name}</li>
                                     %endfor
                                 </ul>
