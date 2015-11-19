@@ -16,7 +16,7 @@ from ifmo_catalog.utils import get_course_categories_ids
   course_categories_ids = get_course_categories_ids(course)
 %>
 
-<article class="course" id="${course.id | h}" role="region" aria-label="${get_course_about_section(course, 'title')}" data-ifmo-course-state="${course_state}" data-ifmo-course-categories="${get_course_categories_ids()}">
+<article class="course" id="${course.id | h}" role="region" aria-label="${get_course_about_section(course, 'title')}" data-ifmo-course-state="${course_state}" data-ifmo-course-categories="${course_categories_ids}">
   <a href="${reverse('about_course', args=[course.id.to_deprecated_string()])}">
     <header class="course-image">
       <div class="cover-image">
