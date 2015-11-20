@@ -18,6 +18,14 @@ from ifmo_catalog.utils import get_mapped_index_courses
 
   index_courses = [i for i in courses[:settings.HOMEPAGE_COURSE_MAX] if not getattr(i, 'hidden', False)]
   mapped_courses = get_mapped_index_courses(index_courses)
+  labels = {
+    "current": "Current courses",
+    "upcoming": "Upcoming courses",
+    "ended": "Archived courses"
+  }
+  courses_by_category = [(labels["upcoming"], mapped_courses["upcoming"]),
+                         (labels["current"], mapped_courses["current"]),
+                         (labels["ended"], mapped_courses["ended"])]
 %>
 
 <section class="home">
@@ -30,9 +38,10 @@ from ifmo_catalog.utils import get_mapped_index_courses
     <section class="highlighted-courses">
 
       % if settings.FEATURES.get('COURSES_ARE_BROWSABLE'):
-          %for k, v in mapped_courses.items():
+          %for label, v in courses_by_category:
               %if v:
                 <section class="courses">
+                    <h3 class="ifmo-courses-category-header">${label}</h3>
                     <ul class="courses-listing">
                     %for course in v:
                       <li class="courses-listing-item">
