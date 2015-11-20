@@ -41,7 +41,7 @@ from ifmo_catalog.utils import get_mapped_index_courses
           %for label, v in courses_by_category:
               %if v:
                 <section class="courses">
-                    <h3 class="ifmo-courses-category-header">${label}</h3>
+                    <h2>${label}</h2>
                     <ul class="courses-listing">
                     %for course in v:
                       <li class="courses-listing-item">
