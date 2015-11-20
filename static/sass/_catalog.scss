@@ -107,12 +107,12 @@
 //Отображение в course-about
 .course-info .course-sidebar .important-dates .important-dates-item.ifmo-course-about-catalog{
   ul{
-    padding-left: 0px;
     list-style-type: disc;
+    float: left;
   }
 
   li{
-    margin: 0;
+    margin: 10px 0;
     padding: 0;
     border: none;
   }

@@ -135,7 +135,6 @@
     )
     # course_image = static.url(course_image_url(course))
 
-    categories = get_course_categories_names(course)
 %>
   <script type="text/javascript" src="https://vk.com/js/api/share.js?90" charset="windows-1251"></script>
   <script type="text/javascript">
@@ -157,6 +156,9 @@
 
 <%block name="pagetitle">${get_course_about_section(course, "title")}</%block>
 
+<%
+  categories = get_course_categories_names(course)
+%>
 <section class="course-info">
   <header class="course-profile ifmo-search ifmo-search-background">
     <div class="intro-inner-wrapper">
@@ -335,7 +337,7 @@
         </header>
 
         <ol class="important-dates">
-          <li class="important-dates-item"><i class="icon fa fa-info-sign"></i><p class="important-dates-item-title">${_("Course Number")}</p><span class="important-dates-item-text course-number">${course.display_number_with_default | h}</span></li>
+          <li class="important-dates-item"><i class="icon fa fa-info-circle"></i><p class="important-dates-item-title">${_("Course Number")}</p><span class="important-dates-item-text course-number">${course.display_number_with_default | h}</span></li>
           % if not course.start_date_is_still_default:
             <li class="important-dates-item"><i class="icon fa fa-calendar"></i><p class="important-dates-item-title">${_("Classes Start")}</p><span class="important-dates-item-text start-date">${course.start_datetime_text()}</span></li>
           % endif
@@ -366,7 +368,7 @@
           % endif
           % if categories:
             <li class="important-dates-item ifmo-course-about-catalog">
-                <i class="icon icon-search"></i>
+                <i class="icon fa fa-search"></i>
                 <p class="important-dates-item-title">Categories</p>
                 <ul>
                     %for category in categories:
