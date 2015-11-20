@@ -9,6 +9,7 @@
   from courseware.courses import course_image_url, get_course_about_section
   from django.conf import settings
   from edxmako.shortcuts import marketing_link
+  from ifmo_catalog.utils import get_course_categories_names
 %>
 <%namespace name='static' file='../static_content.html'/>
 <%! from microsite_configuration import microsite %>
@@ -134,6 +135,7 @@
     )
     # course_image = static.url(course_image_url(course))
 
+    categories = get_course_categories_names(course)
 %>
   <script type="text/javascript" src="https://vk.com/js/api/share.js?90" charset="windows-1251"></script>
   <script type="text/javascript">
@@ -361,6 +363,17 @@
 
           % if get_course_about_section(course, "prerequisites"):
             <li class="important-dates-item"><i class="icon fa fa-book"></i><p class="important-dates-item-title">${_("Prerequisites")}</p><span class="important-dates-item-text prerequisites">${get_course_about_section(course, "prerequisites")}</span></li>
+          % endif
+          % if categories:
+            <li class="important-dates-item ifmo-course-about-catalog">
+                <i class="icon icon-search"></i>
+                <p class="important-dates-item-title">Categories</p>
+                <ul>
+                    %for category in categories:
+                      <li>${category}</li>
+                    %endfor
+                </ul>
+            </li>
           % endif
         </ol>
       </section>

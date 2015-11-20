@@ -104,6 +104,20 @@
   padding-bottom: 20px;
 }
 
+//Отображение в course-about
+.course-info .course-sidebar .important-dates .important-dates-item.ifmo-course-about-catalog{
+  ul{
+    padding-left: 0px;
+    list-style-type: disc;
+  }
+
+  li{
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
+}
+
 // Контейнер с курсами.
 .find-courses .courses-container .ifmo-courses-and-catalog-container .courses.ifmo-override {
 
