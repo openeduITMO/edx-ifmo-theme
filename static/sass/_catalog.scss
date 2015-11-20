@@ -98,21 +98,18 @@
     }
   }
 
-.ifmo-courses-category-header{
-  font-family: 'Open Sans',Verdana,Geneva,sans-serif,sans-serif;
-  font-size: 42px;
-  padding-bottom: 20px;
-}
-
 //Отображение в course-about
 .course-info .course-sidebar .important-dates .important-dates-item.ifmo-course-about-catalog{
   ul{
     list-style-type: disc;
-    float: left;
+    padding-left: $baseline*2;
+    padding-top: $baseline/4;
+    clear: both;
+    font-weight: normal;
   }
 
   li{
-    margin: 10px 0;
+    margin: $baseline/2 0;
     padding: 0;
     border: none;
   }
