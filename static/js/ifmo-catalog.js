@@ -1,14 +1,40 @@
+
+
 $(document).ready(function(){
-
     var cache = {};
-
     var $time_filters = $(".time-filters li");
     var $category_filters = $(".category-filters");
     var $courses = $(".course");
     var $courses_container = $('.courses-listing.ifmo-listing');
     var filters = [];
 
-    //Удаляет фильтр установленный на любом из елементов group из общего списка текущих фильтров (filters)
+    $courses.parent().slice(6).hide();
+    var extra_courses_are_hidden = true;
+
+    //Показывает все курсы, которые были скрыты при загрузке страницы
+    function show_extra_courses(){
+        if (extra_courses_are_hidden){
+            $('.ifmo-catalog-more-courses').hide();
+            $courses.parent().show();
+            extra_courses_are_hidden = false
+        }
+    }
+
+    $('.ifmo-catalog-more-courses').click(function(){
+        show_extra_courses();
+    });
+
+
+    // Селектор возвращающий элементы содержащие указанный текст, вне зависимости от регистра
+    jQuery.expr[':'].containsInsensitive = function(a, i, m) {
+      return jQuery(a).text().toUpperCase()
+          .indexOf(m[3].toUpperCase()) >= 0;
+    };
+
+    /**
+     * Удаляет фильтр установленный на любом из елементов group из общего списка текущих фильтров (filters)
+     * @param group DOM элементы которые находятся в одной категории
+     */
     function delete_group_from_filter(group){
         var new_filter = [];
         for(var i = 0; i<filters.length; i++){
@@ -19,12 +45,31 @@ $(document).ready(function(){
         filters = new_filter;
     }
 
-    //Оставляет видными только те элементы, у которых в аттрибуте attr присутствует значение attr_value
+    /**
+     * Кеширует курсы, которые будут скрыты при применении фильтров (apply_filters)
+     * @param $elems список курсов которые будут отфильтрованы
+     * @param attr атрибут курса который будет проверяться при фильтрации
+     *        (может быть указан "search" если применяется поиск по курсам)
+     * @param attr_value значение атрибута по которому будет проводиться поиск
+     */
     function cache_courses($elems, attr, attr_value){
-        $elems.filter(":not(["+attr+"~='"+attr_value+"'])").each(function(){
-            var $parent = $(this).parent();
-            cache[$parent.index()] = $parent;
-        });
+        function add_element_to_cache($el){
+            cache[$el.index()] = $el;
+        }
+        if(attr == "search"){
+            $elems.each(function(){
+                if (!$(this).has(".ifmo-author-data p:containsInsensitive('"+ attr_value +"')").length &&
+                    !$(this).has(".course-code:containsInsensitive('"+ attr_value +"')").length &&
+                    !$(this).has(".course-title:containsInsensitive('"+ attr_value +"')").length) {
+
+                    add_element_to_cache($(this).parent());
+                }
+            })
+        }else{
+            $elems.filter(":not(["+attr+"~='"+attr_value+"'])").each(function(){
+                add_element_to_cache($(this).parent());
+            });
+        }
     }
 
     //Применяет ко всем курсам текущие установленные фильтры (filters)
@@ -57,9 +102,14 @@ $(document).ready(function(){
         });
     }
 
-    //Устанавливает событие нажатия на один из фильтров и добавляет фильтр в общий список filters
+    /**
+     * Устанавливает событие нажатия на один из фильтров
+     * @param $elems элементы к которым будет привязано событие
+     * @param filter_attr аттрибут курса по которому будет происходить фильтрование
+     */
     function set_filter_event($elems, filter_attr){
         $elems.click(function(){
+            show_extra_courses();
             var attr_value = $(this).attr("filter");
             var filter_element = {"attr_name": filter_attr,
                                   "value": attr_value,
@@ -78,8 +128,36 @@ $(document).ready(function(){
         })
     }
 
+    /**
+     * Устанавливает событие изменения $input для реализации поиска по значению
+     * @param $input <input> к которому привязывется событие
+     */
+    function set_search_event($input){
+        $input.on('input', function () {
+            show_extra_courses();
+            var value = $(this).val();
+            delete_group_from_filter($input);
+            if(value) {
+                filters.push({"attr_name": "search",
+                              "value": value,
+                              "group": $input});
+            }
+            apply_filters();
+        })
+    }
+
+    set_search_event($(".ifmo-catalog-search input"));
+
     set_filter_event($time_filters, "data-ifmo-course-state");
     $category_filters.each(function(){
         set_filter_event($(this).find("li"), "data-ifmo-course-categories");
     });
 });
+/*
+var $time_filters = $(".time-filters li");
+$time_filters.unbind('click')
+var $category_filters = $(".category-filters");
+$category_filters.each(function(){
+        $(this).find("li").unbind('click')
+    });
+* */

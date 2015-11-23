@@ -23,6 +23,11 @@
 
 }
 
+// Увеличение шрифта ссылки "view all courses" в index.html
+.courses-more-cta.ifmo-view-all-courses {
+  font-size: 1.5em;
+}
+
 @import "search_image";
 @import "content";
 @import "course";
