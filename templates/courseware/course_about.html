@@ -374,10 +374,23 @@
           % if get_course_about_section(course, "prerequisites"):
             <li class="important-dates-item"><i class="icon fa fa-book"></i><p class="important-dates-item-title">${_("Prerequisites")}</p><span class="important-dates-item-text prerequisites">${get_course_about_section(course, "prerequisites")}</span></li>
           % endif
+
+          <%
+            if course.has_ended():
+              course_state = "Archived"
+            elif course.has_started():
+              course_state = "Current"
+            else:
+              course_state = "Upcoming"
+          %>
+
+          <li class="important-dates-item"><i class="icon fa fa-check-square-o"></i><p class="important-dates-item-title">${_("Status")}</p><span class="important-dates-item-text prerequisites">${course_state}</span></li>
+
           % if categories:
             <li class="important-dates-item ifmo-course-about-catalog">
                 <i class="icon fa fa-search"></i>
                 <p class="important-dates-item-title">Categories</p>
+                <div class="ifmo-clear-fix"></div>
                 <ul>
                     %for category in categories:
                       <li>${category}</li>

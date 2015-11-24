@@ -58,7 +58,7 @@
     @include span-columns(3); // 3 of 12
   }
 
-  padding-top: 40px;
+  padding-top: $baseline*2;
 
   .ifmo-catalog {
     box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.125), inset 0 0 0 1px rgba(255, 255, 255, 0.75);
@@ -69,7 +69,7 @@
     h3 {
       font-weight: bold;
       margin: $baseline/2;
-      font-family: 'Open Sans', Verdana, Geneva, sans-serif, sans-serif;
+      font-family: $f-sans-serif;
     }
 
     hr {
@@ -104,7 +104,7 @@
     }
 
       h4{
-        font-family: 'Open Sans',Verdana,Geneva,sans-serif,sans-serif;
+        font-family: $f-sans-serif;
         font-size: 1em;
         padding-left: $baseline;
         font-weight: bold;
@@ -112,21 +112,18 @@
     }
   }
 
-.ifmo-courses-category-header{
-  font-family: 'Open Sans',Verdana,Geneva,sans-serif,sans-serif;
-  font-size: 42px;
-  padding-bottom: 20px;
-}
-
 //Отображение в course-about
 .course-info .course-sidebar .important-dates .important-dates-item.ifmo-course-about-catalog{
   ul{
     list-style-type: disc;
-    float: left;
+    padding-left: $baseline*2;
+    padding-top: $baseline/4;
+    clear: both;
+    font-weight: normal;
   }
 
   li{
-    margin: 10px 0;
+    margin: $baseline/2 0;
     padding: 0;
     border: none;
   }
@@ -171,4 +168,13 @@
   }
   @include omega();
 
+}
+
+div#ifmo-total-courses {
+  font-family: $f-sans-serif;
+  font-size: 2em;
+
+  .ifmo-total-courses-matching {
+    display: none;
+  }
 }
