@@ -2,7 +2,7 @@
   import json
   from django.utils.translation import ugettext as _
   from microsite_configuration import microsite
-  from ifmo_catalog.utils import get_all_categories
+  from ifmo_catalog.utils import get_all_categories, filter_visible_courses
 %>
 <%inherit file="../main.html" />
 
@@ -55,7 +55,12 @@
     )
 
     logo_alt_text = _("{platform_name} Logo").format(platform_name=platform_name)
-    categories = get_all_categories()
+
+  categories = get_all_categories()
+
+  # Локальные переменные будут обновлены контекстом только после того, как
+  # выполнится этот блок, поэтому заберём курсы самостоятельно.
+  filtered_courses = filter_visible_courses(context.get('courses'))
 %>
 
 <section class="find-courses">
@@ -85,6 +90,8 @@
     <div id="filter-bar" class="filters hide-phone">
     </div>
     % endif
+
+      <div id="ifmo-total-courses">${_('Viewing <span class="ifmo-total-courses-all"> all </span><span class="ifmo-total-courses">%s</span> courses<span class="ifmo-total-courses-matching"> matching</span>') % len(filtered_courses)}</div>
 
         <section class="ifmo-courses-and-catalog-container">
             <section class="ifmo-catalog-container">
@@ -122,12 +129,10 @@
 
             <section class="courses${'' if course_discovery_enabled else ' no-course-discovery'} ifmo-override">
                 <ul class="courses-listing ifmo-listing">
-                    %for course in courses:
-                        %if not getattr(course, 'hidden', False):
-                            <li class="ifmo-courses-listing-item">
-                                    <%include file="../course.html" args="course=course" />
-                            </li>
-                        %endif
+                    %for course in filtered_courses:
+                        <li class="ifmo-courses-listing-item">
+                                <%include file="../course.html" args="course=course" />
+                        </li>
                     %endfor
                 </ul>
                 <a class="ifmo-catalog-more-courses">More courses</a>

@@ -58,7 +58,7 @@
     @include span-columns(3); // 3 of 12
   }
 
-  padding-top: 40px;
+  padding-top: $baseline*2;
 
   .ifmo-catalog {
     box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.125), inset 0 0 0 1px rgba(255, 255, 255, 0.75);
@@ -69,7 +69,7 @@
     h3 {
       font-weight: bold;
       margin: $baseline/2;
-      font-family: 'Open Sans', Verdana, Geneva, sans-serif, sans-serif;
+      font-family: $f-sans-serif;
     }
 
     hr {
@@ -104,7 +104,7 @@
     }
 
       h4{
-        font-family: 'Open Sans',Verdana,Geneva,sans-serif,sans-serif;
+        font-family: $f-sans-serif;
         font-size: 1em;
         padding-left: $baseline;
         font-weight: bold;
@@ -168,4 +168,13 @@
   }
   @include omega();
 
+}
+
+div#ifmo-total-courses {
+  font-family: $f-sans-serif;
+  font-size: 2em;
+
+  .ifmo-total-courses-matching {
+    display: none;
+  }
 }

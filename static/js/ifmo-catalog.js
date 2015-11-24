@@ -115,6 +115,20 @@ $(document).ready(function(){
         }
     }
 
+
+    function show_matching_message()
+    {
+        var $div = $('div#ifmo-total-courses');
+        $div.find('.ifmo-total-courses').text($courses_container.children().length);
+        if(filters.length) {
+            $div.find('.ifmo-total-courses-all').hide();
+            $div.find('.ifmo-total-courses-matching').show();
+        } else {
+            $div.find('.ifmo-total-courses-all').show();
+            $div.find('.ifmo-total-courses-matching').hide();
+        }
+    }
+
     $('.ifmo-catalog-more-courses').click(function(){
         show_extra_courses();
     });
@@ -158,6 +172,7 @@ $(document).ready(function(){
             });
 
         }).then(function(){
+            show_matching_message();
             $('.courses-listing.ifmo-listing').fadeIn(150);
         });
     }
@@ -187,7 +202,6 @@ $(document).ready(function(){
                 $(this).addClass("highlighted");
             }
             apply_filters();
-            console.log(cache$);
         });
     }
 
