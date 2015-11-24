@@ -119,7 +119,13 @@ $(document).ready(function(){
     function show_matching_message()
     {
         var $div = $('div#ifmo-total-courses');
-        $div.find('.ifmo-total-courses').text($courses_container.children().length);
+        var total_courses = $courses_container.children().length;
+        $div.find('.ifmo-total-courses').text(total_courses);
+        if (!total_courses){
+            $('.ifmo-no-courses-found').show();
+        }else{
+            $('.ifmo-no-courses-found').hide();
+        }
         if(filters.length) {
             $div.find('.ifmo-total-courses-all').hide();
             $div.find('.ifmo-total-courses-matching').show();
