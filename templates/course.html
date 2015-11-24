@@ -5,6 +5,7 @@ from django.core.urlresolvers import reverse
 from courseware.courses import course_image_url, get_course_about_section
 from ifmo_catalog.utils import get_course_categories_ids
 %>
+
 <%page args="course" />
 <%
   if course.has_ended():

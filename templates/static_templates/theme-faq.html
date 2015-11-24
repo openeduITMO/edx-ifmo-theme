@@ -9,6 +9,16 @@
 
 <%block name="pagetitle">${_("Frequently Asked Questions")}</%block>
 
+<%block name="js_extra">
+<script src="${static.url('js/help.js')}"></script>
+</%block>
+
+<%block name="headextra">
+<meta name="title" content="ITMOcourses | Часто задаваемые вопросы" />
+<meta name="description" content="ITMOcourses ‒ открытое онлайн­обучение ­ это бесплатный доступ для всех желающих к учебным онлайн­курсам, разработанным в Университете ИТМО!" />
+<meta name="keywords" content="онлайн курсы бесплатно, курсы итмо, онлайн обучение, обучающие курсы, онлайн образование" />
+</%block>
+
 ## TODO Move out two legacy classes from here
 <section class="container about ifmo-content static-container help">
 
@@ -165,15 +175,3 @@
 
 
   </section>
-
-<%block name="js_extra">
-<script type="application/javascript">
-    $(document).ready(function() {
-        $('.response').click(function(){
-          $(this).toggleClass('opened');
-          answer = $(this).find(".answer");
-          answer.slideToggle('fast');
-        });
-    });
-</script>
-</%block>

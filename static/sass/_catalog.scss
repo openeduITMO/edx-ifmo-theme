@@ -112,6 +112,16 @@
     }
   }
 
+//Заголовок, который показывается, если курсы не найдены
+.ifmo-no-courses-found{
+  font-family: $f-serif;
+  font-style: italic;
+  margin: $baseline/2;
+  font-size: $baseline;
+  display: none;
+}
+
+
 //Отображение в course-about
 .course-info .course-sidebar .important-dates .important-dates-item.ifmo-course-about-catalog{
   ul{

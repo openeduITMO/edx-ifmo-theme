@@ -128,6 +128,7 @@
             </section>
 
             <section class="courses${'' if course_discovery_enabled else ' no-course-discovery'} ifmo-override">
+                <h3 class="ifmo-no-courses-found">No courses found</h3>
                 <ul class="courses-listing ifmo-listing">
                     %for course in filtered_courses:
                         <li class="ifmo-courses-listing-item">
