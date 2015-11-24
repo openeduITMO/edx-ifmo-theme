@@ -379,16 +379,18 @@
           <li class="important-dates-item"><i class="icon fa fa-check-square-o"></i><p class="important-dates-item-title">${_("Status")}</p><span class="important-dates-item-text prerequisites">${course_state}</span></li>
 
           % if categories:
-            <li class="important-dates-item ifmo-course-about-catalog">
-                <i class="icon fa fa-search"></i>
-                <p class="important-dates-item-title">Categories</p>
-                <div class="ifmo-clear-fix"></div>
-                <ul>
-                    %for category in categories:
-                      <li>${category}</li>
-                    %endfor
-                </ul>
-            </li>
+            % for category, subs in categories.items():
+              <li class="important-dates-item ifmo-course-about-catalog">
+                  <i class="icon fa fa-search"></i>
+                  <p class="important-dates-item-title">${category}</p>
+                  <div class="ifmo-clear-fix"></div>
+                  <ul>
+                    % for sub in subs:
+                        <li>${sub}</li>
+                    % endfor
+                  </ul>
+              </li>
+            % endfor
           % endif
         </ol>
       </section>
