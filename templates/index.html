@@ -16,8 +16,8 @@ from ifmo_catalog.utils import get_mapped_index_courses, filter_visible_courses
 
   show_partners = microsite.get_value('show_partners', True)
 
-  index_courses = filter_visible_courses(courses)[:settings.HOMEPAGE_COURSE_MAX]
-  mapped_courses = get_mapped_index_courses(index_courses)
+  index_courses = filter_visible_courses(courses)
+  mapped_courses = get_mapped_index_courses(index_courses[:settings.HOMEPAGE_COURSE_MAX])
   labels = {
     "current": "Current courses",
     "upcoming": "Upcoming courses",

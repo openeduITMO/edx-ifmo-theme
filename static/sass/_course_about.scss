@@ -14,3 +14,8 @@
 
 
 }
+
+// По непонятной причине, в оригинальном шаблоне иконки разъезжаются
+.course-info .course-sidebar .important-dates li .icon {
+  margin-top: -1px !important;
+}

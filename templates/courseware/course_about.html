@@ -1,14 +1,10 @@
-## course_about.html
-## commit: 54b7a578a261abc1438b024d273e753fc5746c13
-## date: Tue Nov 4 13:03:36 2014 -0800
-## modified: Fri Dec 12 17:00:00 2014 +3000
-
 <%! from django.utils.translation import ugettext as _ %>
 <%!
   from django.core.urlresolvers import reverse
-  from courseware.courses import course_image_url, get_course_about_section
+  from courseware.courses import get_course_about_section
   from django.conf import settings
   from edxmako.shortcuts import marketing_link
+  from openedx.core.lib.courses import course_image_url
   from ifmo_catalog.utils import get_course_categories_names
 %>
 <%namespace name='static' file='../static_content.html'/>
@@ -19,10 +15,10 @@
 
   ## OG (Open Graph) title and description added below to give social media info to display
   ## (https://developers.facebook.com/docs/opengraph/howtos/maximizing-distribution-media-content#tags)
-  <meta property="og:title" content="${get_course_about_section(course, 'title')}" />
-  <meta property="og:description" content="${get_course_about_section(course, 'short_description')}" />
+  <meta property="og:title" content="${course.display_name_with_default}" />
+  <meta property="og:description" content="${get_course_about_section(request, course, 'short_description')}" />
 
-  <meta name="title" content="${get_course_about_section(course, 'title')} | ITMOcourses" />
+  <meta name="title" content="${course.display_name_with_default} | ITMOcourses" />
   % if hasattr(course, 'meta_description'):
   <meta name="description" content="${course.meta_description}" />
   %endif
@@ -137,7 +133,7 @@
         site_domain=platform_url,
         course_location=course_image_url(course)
     )
-    course_title = get_course_about_section(course, 'title')
+    course_title = course.display_name_with_default
     vk_share_text = "Я буду проходить этот курс! Присоединяйтесь: {course_url}".format(
         course_url=course_url
     )
@@ -162,7 +158,7 @@
         
 </%block>
 
-<%block name="pagetitle">${get_course_about_section(course, "title")}</%block>
+<%block name="pagetitle">${course.display_name_with_default}</%block>
 
 <%
   categories = get_course_categories_names(course)
@@ -174,9 +170,9 @@
       <section class="intro">
         <hgroup>
           <h1>
-            <span class="course-number">${course.display_number_with_default | h}</span> ${get_course_about_section(course, "title")}
+            <span class="course-number">${course.display_number_with_default | h}</span> ${course.display_name_with_default}
             % if not self.theme_enabled():
-              <a href="#">${get_course_about_section(course, "university")}</a>
+              <a href="#">${course.display_org_with_default | h}</a>
             % endif
           </h1>
         </hgroup>
@@ -239,7 +235,7 @@
         </div>
 
       </section>
-      % if get_course_about_section(course, "video"):
+      % if get_course_about_section(request, course, "video"):
       <a href="#video-modal" class="media" rel="leanModal">
         <div class="hero">
           <img src="${course_image_url(course)}" alt="" />
@@ -265,17 +261,8 @@
         </div>
       % endif
 
-      <nav>
-        <a href="#" class="active">${_("Overview")}</a>
-      ##  <a href="#">${_("FAQ")}</a>
-      ##  <a href="#">${_("Requirements")}</a>
-      ##  <a href="#">${_("Text-book")}</a>
-      ##  <a href="#">${_("Syllabus")}</a>
-      ##  <a href="#">${_("Reviews")}</a>
-      </nav>
-
       <div class="inner-wrapper">
-        ${get_course_about_section(course, "overview")}
+        ${get_course_about_section(request, course, "overview")}
       </div>
     </section>
 
@@ -289,10 +276,10 @@
             ##       or something allowing themes to do whatever they
             ##       want here (and on this whole page, really).
             % if self.stanford_theme_enabled():
-              <a href="https://twitter.com/intent/tweet?text=I+just+registered+for+${course.number}+${get_course_about_section(course, 'title')}!+(http://class.stanford.edu)" class="share">
+              <a href="https://twitter.com/intent/tweet?text=I+just+registered+for+${course.number}+${course.display_name_with_default}!+(http://class.stanford.edu)" class="share">
                 <i class="icon fa fa-twitter"></i><span class="sr">Tweet that you've registered for this course</span>
               </a>
-              <a href="mailto:?subject=Take%20a%20course%20at%20Stanford%20online!&body=I%20just%20registered%20for%20${course.number}%20${get_course_about_section(course, 'title')}+(http://class.stanford.edu)" class="share">
+              <a href="mailto:?subject=Take%20a%20course%20at%20Stanford%20online!&body=I%20just%20registered%20for%20${course.number}%20${course.display_name_with_default}+(http://class.stanford.edu)" class="share">
                 <i class="icon fa fa-envelope"></i><span class="sr">Email someone to say you've registered for this course</span>
               </a>
             % else:
@@ -304,7 +291,7 @@
                 # Twitter account. {url} should appear at the end of the text.
                 tweet_text = _("I just registered for {number} {title} through {account}: {url}").format(
                     number=course.number,
-                    title=get_course_about_section(course, 'title'),
+                    title=course.display_name_with_default,
                     account=microsite.get_value('course_about_twitter_account', settings.PLATFORM_TWITTER_ACCOUNT),
                     url=u"http://{domain}{path}".format(
                         domain=site_domain,
@@ -319,7 +306,7 @@
                     subject=_("Take a course with {platform} online").format(platform=platform_name),
                     body=_("I just registered for {number} {title} through {platform} {url}").format(
                         number=course.number,
-                        title=get_course_about_section(course, 'title'),
+                        title=course.display_number_with_default,
                         platform=platform_name,
                         url=u"http://{domain}{path}".format(
                             domain=site_domain,
@@ -351,13 +338,13 @@
           % endif
             ## We plan to ditch end_date (which is not stored in course metadata),
             ## but for backwards compatibility, show about/end_date blob if it exists.
-            % if get_course_about_section(course, "end_date") or course.end:
+            % if get_course_about_section(request, course, "end_date") or course.end:
             <li class="important-dates-item">
                 <i class="icon fa fa-calendar"></i>
                 <p class="important-dates-item-title">${_("Classes End")}</p>
                 <span class="important-dates-item-text final-date">
-                    % if get_course_about_section(course, "end_date"):
-                        ${get_course_about_section(course, "end_date")}
+                    % if get_course_about_section(request, course, "end_date"):
+                        ${get_course_about_section(request, course, "end_date")}
                     % else:
                         ${course.end_datetime_text()}
                     % endif
@@ -365,14 +352,14 @@
             </li>
             % endif
 
-          % if get_course_about_section(course, "effort"):
-            <li class="important-dates-item"><i class="icon fa fa-pencil"></i><p class="important-dates-item-title">${_("Estimated Effort")}</p><span class="important-dates-item-text effort">${get_course_about_section(course, "effort")}</span></li>
+          % if get_course_about_section(request, course, "effort"):
+            <li class="important-dates-item"><i class="icon fa fa-pencil"></i><p class="important-dates-item-title">${_("Estimated Effort")}</p><span class="important-dates-item-text effort">${get_course_about_section(request, course, "effort")}</span></li>
           % endif
 
           ##<li class="important-dates-item"><i class="icon fa fa-time"></i><p class="important-dates-item-title">${_('Course Length')}</p><span class="important-dates-item-text course-length">${_('{number} weeks').format(number=15)}</span></li>
 
-          % if get_course_about_section(course, "prerequisites"):
-            <li class="important-dates-item"><i class="icon fa fa-book"></i><p class="important-dates-item-title">${_("Prerequisites")}</p><span class="important-dates-item-text prerequisites">${get_course_about_section(course, "prerequisites")}</span></li>
+          % if get_course_about_section(request, course, "prerequisites"):
+            <li class="important-dates-item"><i class="icon fa fa-book"></i><p class="important-dates-item-title">${_("Prerequisites")}</p><span class="important-dates-item-text prerequisites">${get_course_about_section(request, course, "prerequisites")}</span></li>
           % endif
 
           <%
@@ -405,7 +392,7 @@
 
 
       ## For now, ocw links are the only thing that goes in additional resources
-      % if get_course_about_section(course, "ocw_links"):
+      % if get_course_about_section(request, course, "ocw_links"):
       <section class="additional-resources">
         <header>
           <h1>${_("Additional Resources")}</h1>
@@ -414,7 +401,7 @@
         <section>
           ## "MITOpenCourseware" should *not* be translated
           <h2 class="opencourseware">MITOpenCourseware</h2>
-             ${get_course_about_section(course, "ocw_links")}
+             ${get_course_about_section(request, course, "ocw_links")}
         </section>
       </section>
       %endif

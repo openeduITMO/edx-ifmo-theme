@@ -2,40 +2,39 @@
   import json
   from django.utils.translation import ugettext as _
   from microsite_configuration import microsite
+  from openedx.core.lib.js_utils import escape_json_dumps
   from ifmo_catalog.utils import get_all_categories, filter_visible_courses
 %>
 <%inherit file="../main.html" />
+<%
+  course_discovery_enabled = settings.FEATURES.get('ENABLE_COURSE_DISCOVERY')
+%>
 
 <%namespace name='static' file='../static_content.html'/>
 
+% if course_discovery_enabled:
 <%block name="header_extras">
-  % if settings.FEATURES.get('ENABLE_COURSE_DISCOVERY'):
-  % for template_name in ["result_item", "filter_bar", "filter", "search_facets_list", "search_facets_section", "search_facet", "more_less_links"]:
+  % for template_name in ["course_card", "filter_bar", "filter", "facet", "facet_option"]:
   <script type="text/template" id="${template_name}-tpl">
       <%static:include path="discovery/${template_name}.underscore" />
   </script>
   % endfor
-  <script type="text/javascript">;(function (define) {{
-      define('course_discovery_meanings', function() {{
-          'use strict';
-          return ${json.dumps(course_discovery_meanings)};
-        }});
-      }})(define || RequireJS.define);
-  </script>
-  % endif
+  <%static:require_module module_name="js/discovery/discovery_factory" class_name="DiscoveryFactory">
+    DiscoveryFactory(
+      ${ escape_json_dumps(course_discovery_meanings) | n },
+      getParameterByName('search_query')
+    );
+  </%static:require_module>
 </%block>
+% endif
 
 <%block name="js_extra">
-  % if settings.FEATURES.get('ENABLE_COURSE_DISCOVERY'):
-  <%static:js group='discovery'/>
-  % endif
   <script type="text/javascript" src="${static.url('themes/ifmo/js/ifmo-catalog.js')}"></script>
 </%block>
 
 <%block name="pagetitle">${_("Courses")}</%block>
 <%
   platform_name = microsite.get_value('platform_name', settings.PLATFORM_NAME)
-  course_discovery_enabled = settings.FEATURES.get('ENABLE_COURSE_DISCOVERY')
   if self.stanford_theme_enabled():
     course_index_overlay_text = _("Explore free courses from {university_name}.").format(university_name="Stanford University")
     logo_file = static.url('themes/stanford/images/seal.png')
@@ -65,7 +64,8 @@
 
 <section class="find-courses">
 
-  <header class="search ifmo-search ifmo-search-background">
+  ## Никакого панчлайна здесь быть не должно, класс прописан костылём
+  <header class="search ifmo-search ifmo-search-background ifmo-search-background-with-punchline">
       <!--<div class="">Learn new anywhere and anytime with comfort!</div>-->
   </header>
 
