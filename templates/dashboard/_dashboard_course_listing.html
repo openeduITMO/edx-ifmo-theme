@@ -279,7 +279,7 @@ from student.helpers import (
   <footer class="wrapper-messages-primary">
     <ul class="messages-list">
       % if course_overview.may_certify() and cert_status:
-        <%include file='_dashboard_certificate_information.html' args='cert_status=cert_status,course=course, enrollment=enrollment'/>
+        <%include file='_dashboard_certificate_information.html' args='cert_status=cert_status,course_overview=course_overview, enrollment=enrollment'/>
       % endif
 
       % if credit_status is not None:
