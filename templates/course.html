@@ -24,7 +24,7 @@ from ifmo_catalog.utils import get_course_categories_ids
           % if getattr(course, 'course_author', '') != '':
               <div class="ifmo-author-container">
                 <div class="ifmo-author-data">
-                  <span>${_s('Course author:', 'Course authors:', len(getattr(course, 'course_author')))}</span>
+                  <span>${_s('Автор курса:', 'Авторы курса:', len(getattr(course, 'course_author')))}</span>
                   <p>${", ".join(getattr(course, 'course_author'))}</p>
                 </div><div class="ifmo-author-filler"></div>
               </div>

@@ -98,16 +98,16 @@
                 <div class="ifmo-catalog">
                     <div class="ifmo-catalog-search">
                         <i class="icon fa fa-search"></i>
-                        <input type="text" placeholder="Search for courses">
+                        <input type="text" placeholder="Поиск курсов">
                     </div>
                     <hr>
                     <ul>
                         <li>
-                            <h4>Availability</h4>
+                            <h4>Доступность</h4>
                             <ul class="time-filters">
-                                <li filter="started">Current</li>
-                                <li filter="upcoming">Upcoming</li>
-                                <li filter="ended">Archived</li>
+                                <li filter="started">Текущие</li>
+                                <li filter="upcoming">Будущие</li>
+                                <li filter="ended">Завершившиеся</li>
                             </ul>
                         </li>
                         %for category in categories:
@@ -128,7 +128,7 @@
             </section>
 
             <section class="courses${'' if course_discovery_enabled else ' no-course-discovery'} ifmo-override">
-                <h3 class="ifmo-no-courses-found">No courses found</h3>
+                <h3 class="ifmo-no-courses-found">Курсы не найдены</h3>
                 <ul class="courses-listing ifmo-listing">
                     %for course in filtered_courses:
                         <li class="ifmo-courses-listing-item">
@@ -136,7 +136,7 @@
                         </li>
                     %endfor
                 </ul>
-                <a class="ifmo-catalog-more-courses">More courses</a>
+                <a class="ifmo-catalog-more-courses">Больше курсов</a>
             </section>
         </section>
 

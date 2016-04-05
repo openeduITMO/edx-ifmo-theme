@@ -364,14 +364,14 @@
 
           <%
             if course.has_ended():
-              course_state = "Archived"
+              course_state = "Завершившийся"
             elif course.has_started():
-              course_state = "Current"
+              course_state = "Текущий"
             else:
-              course_state = "Upcoming"
+              course_state = "Будущий"
           %>
 
-          <li class="important-dates-item"><i class="icon fa fa-check-square-o"></i><p class="important-dates-item-title">${_("Status")}</p><span class="important-dates-item-text prerequisites">${course_state}</span></li>
+          <li class="important-dates-item"><i class="icon fa fa-check-square-o"></i><p class="important-dates-item-title">${_("Статус")}</p><span class="important-dates-item-text prerequisites">${course_state}</span></li>
 
           % if categories:
             % for category, subs in categories.items():
