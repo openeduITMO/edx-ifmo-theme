@@ -19,9 +19,9 @@ from ifmo_catalog.utils import get_mapped_index_courses, filter_visible_courses
   index_courses = filter_visible_courses(courses)
   mapped_courses = get_mapped_index_courses(index_courses[:settings.HOMEPAGE_COURSE_MAX])
   labels = {
-    "current": "Current courses",
-    "upcoming": "Upcoming courses",
-    "ended": "Archived courses"
+    "current": _("Current courses"),
+    "upcoming": _("Upcoming courses"),
+    "ended": _("Archived courses")
   }
   courses_by_category = [(labels["upcoming"], mapped_courses["upcoming"]),
                          (labels["current"], mapped_courses["current"]),
