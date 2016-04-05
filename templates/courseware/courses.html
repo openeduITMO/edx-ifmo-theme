@@ -91,7 +91,10 @@
     </div>
     % endif
 
-      <div id="ifmo-total-courses">${_('Viewing <span class="ifmo-total-courses-all"> all </span><span class="ifmo-total-courses">%s</span> courses<span class="ifmo-total-courses-matching"> matching</span>') % len(filtered_courses)}</div>
+      <div id="ifmo-total-courses">
+          <span class="ifmo-total-courses-all">Показаны все курсы</span>
+          <span class="ifmo-total-courses-matching"> Найдено <span class="ifmo-total-courses">{{ len(filtered_courses) }} </span> курсов</span>
+      </div>
 
         <section class="ifmo-courses-and-catalog-container">
             <section class="ifmo-catalog-container">
