@@ -36,3 +36,8 @@ li.course-item {
     width: 100% !important;
   }
 }
+
+// Снизу обрезаются выносы букв, например g, j q...
+.dashboard .profile-sidebar .user-info>ul li span.data {
+  padding-bottom: 3px !important;
+}
