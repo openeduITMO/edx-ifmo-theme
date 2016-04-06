@@ -35,7 +35,7 @@
       // Neither this nor event object do not provide DOM object. Strange.
       if (!$(".register").hasClass('disabled')) {
         if($('#ifmo-code-of-honor-checkbox').attr('checked') != 'checked') {
-          alert('Необходимо принять условия кодекса чести, чтобы зарегистрироваться на курс.');
+          alert("${_('You have to accept the Code of Honor to enroll.')}");
           event.preventDefault();
           return false;
         }
