@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-{% load compressed %}{% load sekizai_tags i18n microsite %}{% load url from future %}{% load staticfiles %}
+{% load sekizai_tags i18n microsite pipeline optional_include %}
+{% load url from future %}
+{% load staticfiles %}
 <html lang="{{LANGUAGE_CODE}}">
 <head>
   <meta charset="UTF-8">
@@ -7,36 +9,42 @@
 
  <link rel="icon" type="image/x-icon" href="{% favicon_path %}" />
 
-  {% compressed_css 'style-vendor' %}
-  {% compressed_css 'style-main' %}
-  {% compressed_css 'style-course-vendor' %}
-  {% compressed_css 'style-course' %}
+  {% stylesheet 'style-vendor' %}
+  {% stylesheet 'style-main' %}
+  {% stylesheet 'style-course-vendor' %}
+  {% stylesheet 'style-course' %}
 
   {% block main_vendor_js %}
-  {% compressed_js 'main_vendor' %}
+  {% javascript 'main_vendor' %}
   {% endblock %}
   {% block headextra %}{% endblock %}
   {% render_block "css" %}
 
-  {% microsite_css_overrides_file %}
+  {% optional_include "head-extra.html" %}
 
   <meta name="path_prefix" content="{{EDX_ROOT_URL}}">
 </head>
 
 <body class="{% block bodyclass %}{% endblock %} lang_{{LANGUAGE_CODE}}">
-  <a class="nav-skip" href="{% block nav_skip %}#content{% endblock %}">{% trans "Skip to this view's content" %}</a>
-  {% include "theme-header.html" %}
-  <div class="content-wrapper" id="content">
-    {% block body %}{% endblock %}
-    {% block bodyextra %}{% endblock %}
+  <div class="window-wrap" dir="${static.dir_rtl()}">
+    <a class="nav-skip" href="{% block nav_skip %}#content{% endblock %}">{% trans "Skip to main content" %}</a>
+    {% with course=request.course %}
+      {% include "theme-header.html" %}
+    {% endwith %}
+    <div class="content-wrapper" id="content">
+      {% block body %}{% endblock %}
+      {% block bodyextra %}{% endblock %}
+    </div>
+    {% with course=request.course %}
+      {% include "theme-footer.html" %}
+    {% endwith %}
+
   </div>
 
-  {% include "theme-footer.html" %}
+    {% javascript 'application' %}
+    {% javascript 'module-js' %}
 
-  {% compressed_js 'application' %}
-  {% compressed_js 'module-js' %}
-
-  {% render_block "js" %}
+    {% render_block "js" %}
 </body>
 </html>
 

@@ -1,7 +1,7 @@
 <%inherit file="main.html" />
 <%namespace name='static' file='static_content.html'/>
 <%!
-from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext as _, ungettext
 from django.core.urlresolvers import reverse
 from microsite_configuration import microsite
 from ifmo_catalog.utils import get_mapped_index_courses, filter_visible_courses
@@ -16,12 +16,12 @@ from ifmo_catalog.utils import get_mapped_index_courses, filter_visible_courses
 
   show_partners = microsite.get_value('show_partners', True)
 
-  index_courses = filter_visible_courses(courses)[:settings.HOMEPAGE_COURSE_MAX]
-  mapped_courses = get_mapped_index_courses(index_courses)
+  index_courses = filter_visible_courses(courses)
+  mapped_courses = get_mapped_index_courses(index_courses[:settings.HOMEPAGE_COURSE_MAX])
   labels = {
-    "current": "Current courses",
-    "upcoming": "Upcoming courses",
-    "ended": "Archived courses"
+    "current": _("Current courses"),
+    "upcoming": _("Upcoming courses"),
+    "ended": _("Archived courses")
   }
   courses_by_category = [(labels["upcoming"], mapped_courses["upcoming"]),
                          (labels["current"], mapped_courses["current"]),
@@ -37,7 +37,7 @@ from ifmo_catalog.utils import get_mapped_index_courses, filter_visible_courses
 <section class="home">
 
   <header class="search ifmo-search ifmo-search-background ifmo-search-background-with-punchline">
-      <div class="ifmo-search-punchline">Learn new anywhere and anytime with comfort!</div>
+      <div class="ifmo-search-punchline">Новые знания в любом месте в любое время!</div>
   </header>
 
   <section class="courses-container">
@@ -59,9 +59,9 @@ from ifmo_catalog.utils import get_mapped_index_courses, filter_visible_courses
               %endif
           %endfor
         ## in case there are courses that are not shown on the homepage, a 'View all Courses' link should appear
-        % if settings.HOMEPAGE_COURSE_MAX and len(courses) > settings.HOMEPAGE_COURSE_MAX:
+        % if settings.HOMEPAGE_COURSE_MAX and len(index_courses) > settings.HOMEPAGE_COURSE_MAX:
           <div class="courses-more">
-            <a class="courses-more-cta ifmo-view-all-courses" href="${marketing_link('COURSES')}" > ${_("View all %s Courses") % len(courses)} </a>
+            <a class="courses-more-cta ifmo-view-all-courses" href="${marketing_link('COURSES')}" > ${ungettext("View course", "View all {num} courses", len(index_courses)).format(num=len(index_courses))} </a>
           </div>
         % endif
       % endif

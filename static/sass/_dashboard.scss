@@ -27,3 +27,17 @@
 li.course-item {
   display: none;
 }
+
+// Dropdown пошире, чтобы не было переноса строк "Отписка" и "Настройки почты"
+.dashboard .my-courses .course .details .course-actions .wrapper-action-more .actions-dropdown {
+  min-width: 220px !important;
+
+  ul.actions-dropdown-list li.actions-item a.action {
+    width: 100% !important;
+  }
+}
+
+// Снизу обрезаются выносы букв, например g, j q...
+.dashboard .profile-sidebar .user-info>ul li span.data {
+  padding-bottom: 3px !important;
+}

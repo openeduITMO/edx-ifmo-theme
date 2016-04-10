@@ -9,19 +9,27 @@
   &-search {
 
     &-background {
-      background: transparent center top !important;
+      background: url('../themes/ifmo/images/logo_header_3_1.png') center top !important;
       background-size: cover !important;
       -o-background-size: cover !important;
       -moz-background-size: cover !important;
       -webkit-background-size: cover !important;
-      /*height: 460px !important;*/
+
+      // "Наследство" от старого шаблона
+      margin-top: 0 !important;
+      height: 300px !important;
+      border-bottom: 1px solid #646464;
 
       &-b0 {
-        background-image: url('../themes/ifmo/images/logo_header_3_2.png') !important;
+        background-image: url('../themes/ifmo/images/logo_header_3_1.png') !important;
+      }
+
+      &-b1 {
+        background-image: url('../themes/ifmo/images/logo_header_4_1.png') !important;
       }
 
       &-with-punchline {
-        margin-top: 0 !important;
+        height: 450px !important;
       }
 
     }
