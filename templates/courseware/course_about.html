@@ -289,10 +289,11 @@
 
                 # Translators: This text will be automatically posted to the student's
                 # Twitter account. {url} should appear at the end of the text.
+                twitter_account = settings.SOCIAL_MEDIA_FOOTER_URLS.get('TWITTER_ACCOUNT', settings.PLATFORM_TWITTER_ACCOUNT)
                 tweet_text = _("I just registered for {number} {title} through {account}: {url}").format(
                     number=course.number,
                     title=course.display_name_with_default,
-                    account=microsite.get_value('course_about_twitter_account', settings.PLATFORM_TWITTER_ACCOUNT),
+                    account=microsite.get_value('course_about_twitter_account', twitter_account),
                     url=u"http://{domain}{path}".format(
                         domain=site_domain,
                         path=reverse('about_course', args=[course.id.to_deprecated_string()])
@@ -300,7 +301,8 @@
                 ).replace(u" ", u"+")
                 tweet_action = u"http://twitter.com/intent/tweet?text={tweet_text}".format(tweet_text=tweet_text)
 
-                facebook_link = microsite.get_value('course_about_facebook_link', settings.PLATFORM_FACEBOOK_ACCOUNT)
+                facebook_account = settings.SOCIAL_MEDIA_FOOTER_URLS.get('FACEBOOK', settings.PLATFORM_FACEBOOK_ACCOUNT)
+                facebook_link = microsite.get_value('course_about_facebook_link', facebook_account)
 
                 email_subject = u"mailto:?subject={subject}&body={body}".format(
                     subject=_("Take a course with {platform} online").format(platform=platform_name),
